@@ -1,0 +1,57 @@
+<div class="col-xs-12 col-sm-6 col-md-6">
+  <h4 class="title_padding">
+  <small><b>{{name}}</b></small>
+</h4>
+</div>
+<div class="col-xs-12 c_height_5"><br>
+  <div class="bottom-divider"></div>
+
+  <div class="row c_pading-b25" style="padding-top: 21px;">
+    <span class="pull-left col-md-2">
+       <button type="button" class="btn-vertice btn btn-dark pull-left " {{action "refresh"}}>
+        {{#conditional-loading-spinner condition=showRefreshSpinner size="large" }}
+            <span class="glyphicon glyphicon-refresh"></span>
+    {{/conditional-loading-spinner}}
+    </button>
+    </span>
+    <span class="pull-right text-center col-md-4">
+
+
+              <button type="button" class="btn-vertice btn btn-info"  {{bind-attr disabled="downloadDisabled"}} {{action "download"}} >
+                    <span class="glyphicon glyphicon-download-alt"></span>&nbsp;&nbsp;Download
+    <span class="pull-right">
+                    {{conditional-loading-spinner condition=showdownloadSpinner size="large"}}
+                </span>
+    </button>
+
+
+    <button type="button" class="btn-vertice btn btn-danger pull-right" {{action "delete"}}>
+              <span class="glyphicon glyphicon-trash"></span>
+              <span class="pull-right">
+                  {{conditional-loading-spinner condition=showDeleteSpinner size="large"}}
+              </span>
+              </button>
+    </span>
+
+  </div>
+  {{#if noneToShow}}
+    <div class="col-md-6 info">
+      <h3><b>{{i18n 'admin.backup.info.empty'}}</b></h3>
+    </div>
+  {{else}}
+    <section class="vm">
+
+      <ul class="tabs">
+        {{backup-management-tab panels=panels selectedTab=selectedTab tab="info"}} {{backup-management-tab panels=panels selectedTab=selectedTab tab="shared"}}
+
+      </ul>
+      <div class="vm-modal-body">
+        {{#each panels as |tab|}}
+          {{component tab selectedTab=selectedTab backup=backup model=model}}
+        {{/each}}
+      </div>
+
+
+    </section>
+  {{/if}}
+</div>

@@ -1,0 +1,45 @@
+<section id="presignup" class="collection">
+    <div class="rt-box col-lg-12 col-sm-9 col-md-10 c_bg_white c_height_5">
+        <div class="row">
+            <div class="col-md-10 pad_l186">
+                <h1 class="section-title">Select your account <span class="main-color">model</span></h1>
+            </div>
+            <div class="col-md-2 m_lm30px">
+                {{#if skipButton}}
+                    {{#conditional-loading-spinner size="large" condition=skipingBilling}}
+                        <button class='btn btn-info' {{action "skipBilling"}}>
+                          {{i18n 'billing.billing_skip_btn'}} >>
+                        </button>
+                    {{/conditional-loading-spinner}}
+                {{/if}}
+            </div>
+        </div>
+        <br>
+        {{#if billingsOFF}}
+            <div class="alert alert-danger" role="alert">{{i18n 'billing.billings_of_alert_text'}}</div>
+        {{/if}}
+        <section class="vm section-title">
+            <div class="row pad_b43">
+                <div class="col-md-12 topping">
+                    <ul class="nav nav-tabs-biller-activation">
+                        {{#if enableHourlyBilling}}
+                            <li class="">
+                                {{billing-activate-tab panels=panels selectedTab=selectedTab tab="ondemand"}}
+                            </li>
+                        {{/if}}
+                        {{#if enableMonthlyBilling}}
+                            <li class="">
+                                {{billing-activate-tab panels=panels selectedTab=selectedTab tab="quota"}}
+                            </li>
+                        {{/if}}
+                    </ul>
+                </div>
+            </div>
+            <div class="sub-modal-body">
+                {{#each panels as |tab|}}
+                    {{component tab selectedTab=selectedTab model=model billingRegionOption=billingRegionOption unitFlav=unitFlav regions=regions flavors=flavors flavorOption=flavorOption}}
+                {{/each}}
+            </div>
+        </section>
+    </div>
+</section>

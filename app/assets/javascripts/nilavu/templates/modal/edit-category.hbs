@@ -1,0 +1,56 @@
+<div id="component-create">
+    {{#if marketplaceItemSelected}}
+        {{edit-category-title launchable=launchOption}}
+    {{/if}}
+    <div {{bind-attr class="hidemeClass"}}>
+
+        <section class="launcher-section">
+            <div class="tabbable-custom nav-justified">
+                <ul class="nav nav-tabs nav-justified stepTabs">
+                    {{edit-category-tab panels=panels selectedTab=selectedTab tab="general"}}
+                    {{edit-category-tab panels=panels stepStyle=stepTwoStyle selectedTab=selectedTab tab="selection"}}
+                    {{edit-category-tab panels=panels stepStyle=stepThreeStyle selectedTab=selectedTab tab="summary"}}
+                </ul>
+                <div class="modal-body">
+                    {{#each panels as |tab|}}
+                        {{component tab selectedTab=selectedTab category=model.metaData selectedItem=selectedItem selectedItemOption=selectedItemOption gotoSummarize=gotoSummarize}}
+                    {{/each}}
+                </div>
+            </div>
+        </section>
+        <div class="footer hideme3 no-padding">
+            {{launching-cost saveLabel=saveLabel category=model.metaData}}
+            <div class="col-sm-3 no-padding pull-right">
+                <!-- UGLY, all we need is 3 actions (why not hack a funciton for it), with 1 button -->
+                {{#if generalSelected}}
+                    <div class="col-md-12 col-sm-12 no-padding">
+                        <button class="btn-block btnFooter" title='launch' {{action "nextCategory"}}>
+                            {{saveLabel}}
+                            <span class="pull-right">
+                                {{conditional-loading-spinner condition=loading size="large"}}
+                            </span>
+                        </button>
+                    </div>
+                    {{else if selectionSelected}}
+                    <div class="col-md-12 col-sm-12 no-padding">
+                        <button id="{{if disabled "disabledBtn" "enabledBtn"}}" class="btn-block btnFooter" {{if disabled "data-toggle='tooltip' data-placement='left' title='launch'"}} disabled={{stepTwo}} {{action "nextSummarize"}}>
+                            {{saveLabel}}
+                            <span class="pull-right">
+                                {{conditional-loading-spinner condition=loading size="large"}}
+                            </span>
+                        </button>
+                    </div>
+                    {{else if summarySelected}}
+                    <div class="col-md-12 col-sm-12 no-padding">
+                        <button id="{{if disabled "disabledBtn" "enabledBtn"}}" class="btn-block btnFooter" {{if disabled "data-toggle='tooltip' data-placement='left' title='launch'"}} disabled={{disabled}} {{action "saveCategory"}}>
+                            {{saveLabel}}
+                            <span class="pull-right">
+                                {{conditional-loading-spinner condition=saving size="large"}}
+                            </span>
+                        </button>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+<%= NilavuStylesheets.stylesheet_link_tag(mobile_view? ? :mobile : :desktop) %>
+
+<%- if staff? %>
+  <%= NilavuStylesheets.stylesheet_link_tag(:admin) %>
+<%- end %>

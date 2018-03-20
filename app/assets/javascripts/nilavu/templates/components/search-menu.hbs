@@ -1,0 +1,34 @@
+{{#if searchBarVisible}}
+    <div class="row pad_5">
+        <div class="col-md-12" style="width: 101%;">
+            {{#search-text-field value=searchService.term id="search-term" }}{{/search-text-field}}
+        </div>
+        <div class="col-md-1 pad_5">
+            {{conditional-loading-spinner condition=loading size="large"}}
+        </div>
+    </div>
+{{/if}}
+{{#unless loading}}
+    <div class="results">
+        <div class="table-left-h">
+            <table class="table table-hover report search_table">
+                <tr>
+                    <th style="min-width: 172px;">{{i18n "launcher.search_table_name"}}</th>
+                    <th>{{i18n "launcher.search_table_publisher"}}</th>
+                    <th>{{i18n "launcher.search_table_category"}}</th>
+                    <th>{{i18n "launcher.search_table_action"}}</th>
+                </tr>
+
+                    {{#each content.resultTypes as |resultType|}}
+                        {{component resultType.componentName category=category resultType=resultType.results gotoSummarize=gotoSummarize}}
+                    {{/each}}
+
+            </table>
+            {{#if noResults}}
+                <div class="pull-left no-record-msg">
+                    {{i18n "search.no_results"}}
+                </div>
+            {{/if}}
+        </div>
+    </div>
+{{/unless}}

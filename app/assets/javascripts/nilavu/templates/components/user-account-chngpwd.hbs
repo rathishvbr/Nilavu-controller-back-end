@@ -1,0 +1,44 @@
+<div class="row ">
+    <div class="col-md-8 profile_left_pad_15">
+        <h3><b>{{i18n 'profile_management.account.change_password'}}</b></h3>
+    </div>
+</div>
+<div class="row profile_bottom_pad_15">
+    <div class="col-md-3 profile_left_pad_15 profile_align">
+        <label class="label-profile lable-color">{{i18n 'profile_management.account.current'}}</label>
+    </div>
+    <div class="col-md-5">
+        {{password-field value=model.currentPassword type="password" placeholderKey="user.password.currentpassword" class="form-control" capsLockOn=capsLockOn}}
+    </div>
+    <div class="col-md-4">
+        <a {{action "onClick"}} class="pull-left btn">{{i18n 'profile_management.account.change'}}</a>
+    </div>
+</div>
+<div class="row profile_bottom_pad_15">
+    <div class="col-md-3 profile_left_pad_15 profile_align">
+        <label class="label-profile lable-color">{{i18n 'profile_management.account.new_password'}}</label>
+    </div>
+    <div class="col-md-5">
+        {{password-field value=model.newPassword type="password" placeholderKey="user.password.newpassword" class="form-control" disabled=submitDisabled capsLockOn=capsLockOn}}
+        {{passwordInstructions}}
+
+    </div>
+</div>
+<div class="row profile_bottom_pad_15">
+    <div class="col-md-3 profile_left_pad_15 profile_align">
+        <label class="label-profile lable-color">{{i18n 'profile_management.account.retype'}}</label>
+    </div>
+    <div class="col-md-5">
+        {{password-field value=model.retypePassword type="password" placeholderKey="user.password.confirmpassword" class="form-control" disabled=submitDisabled capsLockOn=capsLockOn}}
+        {{input-tip validation=passwordConfirmValidation}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 offset-md-3 input-group margin-top-10 input-group-button">
+        <button class='btn btn-success col-md-5 col-xs-12' {{action "changePassword"}} {{bind-attr disabled="submitDisabled"}}>update
+          <span class="pull-right">
+              {{conditional-loading-spinner condition=loading size="large"}}
+          </span>
+        </button>
+    </div>
+</div>

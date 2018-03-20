@@ -1,0 +1,18 @@
+<div class="rt-box col-xs-12 c_height_5">
+    {{storage-show-header currentUser=currentUser title=title bucketName=bucket_name model=bucketfiles}}
+    <div class="bottom-divider"></div>
+    <div class="col-xs-12 col-sm-7 col-md-7 br_grey">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <table class="table yfiles-tb tb_upload objectPageList">
+                    <tbody>
+                        {{#each bucketfiles.message.usage as |fs|}}
+                            {{storage-bucket-object usage=fs model=bucketfiles bucketName=bucket_name selectedItem=selectedItem}}
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {{storage-bucket-object-properties bucketfiles=bucketfiles bucketName=bucket_name selectedItem=selectedItem}}
+</div>

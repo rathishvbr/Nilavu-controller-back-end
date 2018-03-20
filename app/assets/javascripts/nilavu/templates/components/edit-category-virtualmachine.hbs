@@ -1,0 +1,28 @@
+<section class="" id="section-topline-2">
+    <div class="vm-step2">
+        <div class="row" style="margin-top:15px;">
+            <div class="col-md-12">
+                {{#if tabHeaderVisible}}
+                    <ul class="tabsos">
+                      {{#each machineImages as |image|}}
+                        {{launching-images-tab imagepanels=imagepanels selectedTab=selectedTab selectedItem=selectedItemFlavor tab=image}}
+                       {{/each}}
+                     </ul>
+                {{else}}
+                   <ul class="tabsos">
+                    {{launching-images-tab imagepanels=imagepanels selectedTab=selectedTab tab=selectedItemFlavor}}
+                  </ul>
+                {{/if}}
+
+                <div class="oscontainer">
+                    <div class="tab-content">
+                        {{#each imagepanels as |tab|}}
+                            {{component tab tab=tab selectedTab=selectedTab category=category}}
+                        {{/each}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

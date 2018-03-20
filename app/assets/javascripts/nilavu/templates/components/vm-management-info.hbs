@@ -1,0 +1,95 @@
+<div class="col-md-6 info">
+    <h3><b>{{title}}</b></h3>
+    <div class="bottom-divider"></div>
+    <table>
+        <tr>
+            <td>
+                <h5><b>{{content_id}}</b></h5></td>
+            <td>{{id}}</td>
+        </tr>
+        <tr>
+            <td>
+                <h5><b>{{content_name}}</b></h5></td>
+            <td>{{name}}</td>
+        </tr>
+        <tr>
+            <td>
+                <h5><b>{{content_os}}</b></h5></td>
+            <td>{{showBrandImage}}</td>
+        </tr>
+        <tr>
+            <td>
+                <h5><b>{{content_domain}}</b></h5></td>
+            <td>{{domain}}</td>
+        </tr>
+        <tr>
+            <td>
+                <h5><b>{{content_state}}</b></h5></td>
+            <td>{{status}}</td>
+        </tr>
+        <tr>
+            <td>
+                <h5><b>{{content_host}}</b></h5></td>
+            <td>{{host}}</td>
+        </tr>
+        <tr>
+            <td>
+                <h5><b>{{content_region}}</b></h5></td>
+            <td>{{region}}</td>
+        </tr>
+        <tr>
+            <td>
+                <h5><b>{{content_start_time}}</b></h5></td>
+            <td>{{createdAt}}</td>
+        </tr>
+
+    </table>
+</div>
+<div class="col-md-6 info">
+    <h3><b>{{resources_title}}</b></h3>
+    <div class="bottom-divider"></div>
+    <table>
+        <tr>
+            <td>
+                <h5><b>{{content_disk_type}}</b></h5></td>
+            <td>{{disk_type}}</td>
+        </tr>
+        <tr>
+            <td>
+                <h5><b>{{content_disk_size}}</b></h5></td>
+            <td>{{disk_size}} {{i18n 'number.human.storage_units.units.gb'}}</td>
+        </tr>
+        <tr>
+            <td>
+                <h5><b>{{content_cpu}}</b></h5></td>
+            <td>{{cpu_cores}} {{i18n 'vm_management.cpu.content_cpu_cores'}}</td>
+        </tr>
+        <tr>
+            <td>
+                <h5><b>{{content_ram}}</b></h5></td>
+            <td>{{ram}} {{i18n 'number.human.storage_units.units.gb'}}</td>
+        </tr>
+    </table>
+</div>
+<div class="col-md-6 info">
+    <h3><b>{{network_title}}</b></h3>
+    <div class="bottom-divider"></div>
+    <table>
+        <tr>
+            <td>
+                <h5><b>{{content_ipv4}}</b></h5></td>
+            <td>{{content_private}}</td>
+            <td>{{input type="checkbox" checked=ipv4Private disabled=true}}</td>
+            <td>{{content_public}}</td>
+            <td>{{input type="checkbox" checked=ipv4Public disabled=true}}</td>
+        </tr>
+        <tr>
+            <td>
+                <h5><b>{{content_ipv6}}</b></h5></td>
+            <td>{{content_private}}</td>
+            <td>{{input type="checkbox" checked=ipv6Private disabled=true}}</td>
+            <td>{{content_public}}</td>
+            <td>{{input type="checkbox" checked=ipv6Public disabled=true}}</td>
+        </tr>
+    </table>
+</div>

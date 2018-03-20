@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row text-center" style="padding-top: 100px;">
+        <div class="col-md-9" style="padding-left: 200px;">
+            {{vncname}}
+        </div>
+        <div class="col-md-3 pull-right" style="padding-bottom: 7px;">
+            <button type="button" {{action "close"}} class='btn btn-danger'>
+        <span class="glyphicon glyphicon-remove"></span> Close
+    </button>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-12">
+            {{container-shell model=model}}
+        </div>
+    </div>
+</div>

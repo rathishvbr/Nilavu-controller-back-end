@@ -1,0 +1,9 @@
+{{#if networks}}
+<table class="table">
+   {{#each networks as |n|}}
+       {{network-attacher network=n model=model}}
+   {{/each}}
+ </table>
+{{else}}
+   <label>{{i18n 'networkr.subnet_not_found'}}</label>
+{{/if}}

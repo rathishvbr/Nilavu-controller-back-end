@@ -1,0 +1,19 @@
+<br>
+<div class="row">
+    <h3 class="head_paint">{{i18n 'launcher.select_duplicate'}}</h3>
+    <div class="bottom-divider"></div>
+</div>
+
+<div class="row pad_t25" style="padding-left: 20px;">
+    <div class="col-md-12 pad_0 fw_600">
+        {{i18n 'launcher.launching_multiple'}}
+    </div>
+</div>
+
+<div class="row pad_t25">
+    {{#if ondemandProduct}}
+        {{super-number id="loop" loop=true value=duplicateable min=1 max=9}}
+    {{else}}
+        {{super-number id="loop" loop=true value=duplicateable min=1 max=quotaCount}}
+    {{/if}}
+</div>

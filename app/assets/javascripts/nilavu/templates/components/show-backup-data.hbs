@@ -1,0 +1,24 @@
+<td class="td-left">
+
+  {{#link-to url  backup.id }}
+    {{backup.name}}
+  {{/link-to}}
+</td>
+<td> {{showBrandImage}}</td>
+<td> <span class="mar_l10">{{backup.status}}</span></td>
+<td>{{backup.created_at}}</td>
+<td>
+  {{#if downloadUrl}}
+      <a href= {{downloadPresignedUrl}} class="btn btn-dark-blue pad_zero">
+          <i class="c_icon-in"></i>
+      </a>
+  {{else}}
+      <span title= {{noUrlTitle}} class="glyphicon glyphicon-exclamation-sign color_light_orange"></span>
+  {{/if}}
+</td>
+<td>
+    {{d-button action="delete" title="admin.dashboard.launches.delete_title" class="btn-danger btn_space_del" icon="trash"}}
+{{conditional-loading-spinner condition=deletingBackup size="large" }}
+</td>
+
+<div id="snackbar" class= {{NotDeleted}}><span class="glyphicon glyphicon-warning-sign" style="right:5px;"></span>{{i18n 'admin.dashboard.launches.not_deleted'}}</div>

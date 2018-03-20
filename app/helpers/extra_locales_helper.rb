@@ -1,0 +1,2 @@
+module ExtraLocalesHelper
+end

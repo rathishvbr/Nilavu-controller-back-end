@@ -1,0 +1,28 @@
+<div class="row ">
+    <div class="col-md-8 profile_left_pad_15">
+        <h3><b>{{i18n 'profile_management.account.information'}}</b></h3>
+    </div>
+    <div class="col-md-4 profile_right_pad_15">
+        <span class="pull-right"><h3><b>{{email}}</b></h3></span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3 profile_left_pad_15 profile_align">
+        <label class="label-profile lable-color">{{i18n 'profile_management.account.name'}}</label>
+    </div>
+    <div class="col-md-5">
+        {{text-field id="tt" class="form-control"  disabled=submitDisabled value=model.first_name}}
+    </div>
+    <div class="col-md-4">
+        <a {{action "onClick"}} class="pull-left btn">{{i18n 'profile_management.account.change'}}</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 offset-md-3 input-group margin-top-10 input-group-button">
+        <button class='btn btn-success col-md-5 col-xs-12' {{action "changeUsername"}} {{bind-attr disabled="submitDisabled"}}>update
+          <span class="pull-right">
+              {{conditional-loading-spinner condition=loading size="large"}}
+          </span>
+        </button>
+    </div>
+</div>

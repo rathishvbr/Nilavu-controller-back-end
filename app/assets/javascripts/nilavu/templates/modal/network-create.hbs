@@ -1,0 +1,14 @@
+<form>
+    <div class="modal-body">
+        <div class="row">
+            {{network-attachers networks=networks model=model}}
+        </div>
+        <button class="btn btn-success col-md-12 col-xs-12" {{action "submit"}}>
+            {{i18n 'vm_management.network.attach'}}
+            <span class="pull-right">
+              {{conditional-loading-spinner condition=showSpinner size="large"}}
+            </span>
+        </button>
+        <div class="clear"></div>
+    </div>
+</form>

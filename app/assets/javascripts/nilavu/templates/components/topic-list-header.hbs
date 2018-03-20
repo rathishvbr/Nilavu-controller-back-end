@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row c_pading-b15">
+        <div class="">
+            <div class="col-xs-12 col-sm-6 col-md-6" style="padding-left: 0px;">
+        <h4 class="title_padding">
+          {{title}}
+          {{#if nameEnabled}}
+            <small><b>{{name}}</b></small>
+          {{/if}}
+          {{#if subTitleEnabled}}
+            <small><b>{{subTitle}}</b></small>
+          {{/if}}
+        </h4>
+            </div>
+            {{#if viewIcons}}
+                <div class="col-xs-12 col-sm-6 col-md-6 settings_grid">
+                    <ul class="list-inline col-xs-12 rt-top-list">
+                        <li class="list-inline-item pull-right">
+                            <i class="c_icon-grid pull-right {{if gridView "active" ""}}" id="app-btn-grid" {{action "changeGridView"}}></i>
+                        </li>
+                        <li class="list-inline-item pull-right">
+                            <i class="c_icon-list pull-right lg-mar-r-15 {{if listView "active" ""}}" id="app-btn-list" {{action "changeListView"}}></i>
+                        </li>
+                    </ul>
+                </div>
+            {{/if}}
+            {{#if addItem}}
+             {{#link-to 'marketplace' class='pull-right'}}Add{{/link-to}}
+
+            {{/if}}
+        </div>
+    </div>
+</div>

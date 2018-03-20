@@ -1,0 +1,84 @@
+<div class="ssh-well">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="center">Flavor {{flavor.name}}</h1>
+            <div>
+                <div class="row ">
+                    <div class="col-md-8">
+                        <h3><b>{{i18n 'admin.flavors.flavor_basic_head'}}</b></h3>
+                    </div>
+                    <div class="col-md-12">
+                    <button class="btn-vertice btn btn-danger pull-right "   {{action "delete"}}>{{i18n 'admin.flavors.btn_delete'}}
+                      <span class="pull-right">{{conditional-loading-spinner condition=showSpinner1 size="large"}}</span>
+                   </button>
+                 </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-2">
+                        <label for="ex1">{{i18n 'admin.flavors.flavor_label_name'}}</label> {{text-field  enableEdit=false value=fname  class="form-control" id="ex1"  placeholder="Ex.flavor10"}}
+                    </div>
+                    <div class="col-xs-2">
+                        <label for="ex2">{{i18n 'admin.flavors.flavor_cpu'}}</label> {{text-field value=fcpu class="form-control" id="ex2"  placeholder="Ex.5"}}
+                    </div>
+                    <div class="col-xs-2">
+                        <label for="ex3">{{i18n 'admin.flavors.flavor_ram'}}</label> {{text-field value=fram class="form-control" id="ex3"  placeholder="Ex.5"}}
+                    </div>
+                    <div class="col-xs-2">
+                        <label for="ex4">{{i18n 'admin.flavors.flavor_disk'}}</label> {{text-field value=fdisk class="form-control" id="ex4"  placeholder="Ex.5"}}
+                    </div>
+                    <!-- <div class="col-xs-2">
+                        <label for="ex5">{{i18n 'admin.flavors.flavor_region'}}</label> {{regions-chooser subRegionOption=model.regions regions=model.region}}
+                    </div> -->
+                    <div class="col-xs-2">
+                        <label for="ex5">{{i18n 'admin.flavors.flavor_region'}}</label> {{text-field value=region class="form-control" id="ex5"  placeholder="Ex.5"}}
+                    </div>
+                </div>
+
+                <div class="row pad_t39">
+                    <div class="col-md-8">
+                        <h3><b>{{i18n 'admin.flavors.flavor_price_head'}}</b></h3>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-2">
+                        <label for="ex6">{{i18n 'admin.flavors.flavor_cpu_h'}}</label> {{text-field value=cpu_cost_hour class="form-control" id="ex6"  placeholder="Ex.flavor10"}}
+                    </div>
+                    <div class="col-xs-2">
+                        <label for="ex7">{{i18n 'admin.flavors.flavor_cpu_m'}}</label> {{text-field value=cpu_cost_month class="form-control" id="ex7"  placeholder="Ex.flavor10"}}
+                    </div>
+                    <div class="col-xs-2">
+                        <label for="ex8">{{i18n 'admin.flavors.flavor_ram_h'}}</label> {{text-field value=ram_cost_hour class="form-control" id="ex8"  placeholder="Ex.flavor10"}}
+                    </div>
+                    <div class="col-xs-2">
+                        <label for="ex9">{{i18n 'admin.flavors.flavor_ram_m'}}</label> {{text-field value=ram_cost_month class="form-control" id="ex9"  placeholder="Ex.flavor10"}}
+                    </div>
+                    <div class="col-xs-2">
+                        <label for="ex10">{{i18n 'admin.flavors.flavor_hdd_h'}}</label> {{text-field value=hdd_cost_hour class="form-control" id="ex10"  placeholder="Ex.flavor10"}}
+                    </div>
+                </div>
+
+
+                <div class="row pad_t39">
+                    <div class="col-xs-2">
+                        <label for="ex11">{{i18n 'admin.flavors.flavor_hdd_m'}}</label> {{text-field value=hdd_cost_month class="form-control" id="ex11"  placeholder="Ex.flavor10"}}
+                    </div>
+                    <div class="col-xs-2">
+                        <label for="ex12">{{i18n 'admin.flavors.flavor_ssd_h'}}</label> {{text-field value=ssd_cost_hour class="form-control" id="ex12"  placeholder="Ex.flavor10"}}
+                    </div>
+                    <div class="col-xs-2">
+                        <label for="ex13">{{i18n 'admin.flavors.flavor_ssd_m'}}</label> {{text-field value=ssd_cost_month class="form-control" id="ex13"  placeholder="Ex.flavor10"}}
+                    </div>
+                    <div class="col-xs-4 pad_t50">
+                        <button class="btn-vertice btn btn-success pull-right col-md-12 col-xs-12" style="height:48px !important;" {{bind-attr disabled='submitDisabled'}} {{action "updateFlavors"}}>{{i18n 'admin.flavors.btn_update'}}
+                      <span class="pull-right">{{conditional-loading-spinner condition=showSpinner size="large"}}</span>
+                       </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="rt-box col-xs-12 c_height_5">
+    {{topic-list-header currentUser=currentUser title=title nameEnabled=nameEnabled name=name subTitleEnabled=subTitleEnabled subTitle=subTitle}}
+    <div class="bottom-divider"></div>
+    <section>
+        <div class="profile">
+            <ul class="tabs">
+                {{profile-management-tab panels=panels selectedTab=selectedTab tab="account"}}
+                {{profile-management-tab panels=panels selectedTab=selectedTab tab="organization"}}
+                {{profile-management-tab panels=panels selectedTab=selectedTab tab="apikey"}}
+            </ul>
+
+            <div class="profile-modal-body">
+                {{#each panels as |tab|}}
+                    {{component tab selectedTab=selectedTab model=model organizationType=organizationType}}
+                {{/each}}
+            </div>
+        </div>
+    </section>
+</div>

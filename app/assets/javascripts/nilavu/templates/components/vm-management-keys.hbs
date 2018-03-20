@@ -1,0 +1,110 @@
+<div class="col-md-12 info">
+
+    <div class="bottom-divider"></div>
+    {{#if byRootUserName}}
+        <div class="ssh-well">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{content_root_pwd_title}}</h1>
+                    <p style="padding-left: 6px;">{{content_root_pwd_content}}</p>
+                </div>
+            </div>
+            <span>
+       <div class="hint_info">
+             <i class="glyphicon glyphicon-info-sign hint_info_space"></i>
+         {{hint_ssh}}{{model.network.someip}}
+           <span>{{hint_ssh_suffix}}</span>
+        </div>
+        </span>
+</div>
+<div class="ssh-well-without-background">
+
+ <div class="col-md-12 info" style="padding-bottom: 22px;">
+     <h3><b>Change Password</b></h3>
+     <div class="bottom-divider"></div>
+    </div>
+
+ <div class="row profile_bottom_pad_15">
+     <div class="col-md-3 profile_left_pad_15 profile_align">
+         <label class="label-profile lable-color">New Password</label>
+     </div>
+     <div class="col-md-5">
+         {{password-field value=newPassword type="password" placeholderKey="user.password.newpassword" class="form-control" capsLockOn=capsLockOn}}
+         {{passwordInstructions}}
+
+     </div>
+ </div>
+ <div class="row profile_bottom_pad_15">
+     <div class="col-md-3 profile_left_pad_15 profile_align">
+         <label class="label-profile lable-color">Retype</label>
+     </div>
+     <div class="col-md-5">
+         {{password-field value=retypePassword type="password" placeholderKey="user.password.confirmpassword" class="form-control" capsLockOn=capsLockOn}}
+         {{input-tip validation=passwordConfirmValidation}}
+     </div>
+ </div>
+ <div class="row">
+     <div class="col-md-6 offset-md-3 input-group margin-top-10 ">
+         <button class='btn-vertice btn btn-success col-md-5 col-xs-12' {{action "changePwd"}} {{bind-attr disabled="submitDisabled"}}>update
+           <span class="pull-right">
+               {{conditional-loading-spinner condition=loading size="large"}}
+           </span>
+         </button>
+     </div>
+ </div>
+
+
+    </div>
+{{/if}}
+
+{{#if bysshKey}}
+    <div class="ssh-well">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{content_sshkey_title}}</h1>
+                <p style="padding-left: 6px;">{{content_sshkey_content}}
+                    <span style="color: #0275d8;">{{privateKey}}{{privateKey_suffix}}</span></p>
+            </div>
+        </div>
+        <span>
+        <div class="hint_info">
+           <i class="glyphicon glyphicon-info-sign hint_info_space"></i>
+              {{hint_ssh_i}}{{privateKey}}{{privateKey_suffix}}
+                <span>{{hint_ssh_suffix_i}}</span>{{model.network.someip}}
+        </div>
+        </span>
+    </div>
+
+    <table>
+        <tr>
+            <td>{{model.sshkey_name}}</td>
+        </tr>
+        <tr>
+            <td>
+                <h5><b>{{content_private_sshkey}}</b></h5></td>
+            <td>{{privateKey}}{{privateKey_suffix}}</td>
+            <td class="sett-private">
+                <a href {{action "download" privateKey privatekeyType}} class="btn btn-dark-red">
+                    <i class="c_icon-inBlue"></i><span>Download</span>
+                    <span class="pull-right">
+            {{conditional-loading-spinner condition=showPrivateSpinner size="large"}}
+          </span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5><b>{{content_public_sshkey}}</b></h5></td>
+            <td>{{publicKey}}{{publicKey_suffix}}</td>
+            <td class="sett-public">
+                <a href {{action "download" publicKey publickeyType}} class="btn btn-dark-blue ">
+                    <i class="c_icon-in"></i><span>Download</span>
+                    <span class="pull-right">
+            {{conditional-loading-spinner condition=showPublicSpinner size="large"}}
+          </span>
+                </a>
+            </td>
+        </tr>
+    </table>
+ {{/if}}
+</div>

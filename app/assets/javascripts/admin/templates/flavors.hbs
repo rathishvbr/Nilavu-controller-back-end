@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class='contents'>
+      <span class="pull-right">
+{{#link-to 'adminFlavors.add'}}
+<button type="button" class="btn-vertice btn btn-info">
+{{i18n 'admin.flavors.btn_add'}}
+</button>
+{{/link-to}}
+</span>
+
+      <div id="app-list" {{bind-attr class="isList:listViewVisible"}}>
+        <div class="row c_pading-b15">
+          <div class="portlet-body-head">
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9 cat_title">
+              <span class="darker-black">
+          <i class="topics_header_torpedo"></i>
+          <span class="title">
+            {{i18n 'dashboards.flavors.title'}}
+          </span>
+              </span>
+              <span style="display: block; margin-top: 10px;">
+          <span style="color: #6fde86">
+            {{noOfFlavors}}
+          </span> {{i18n 'dashboards.flavors.subtitle'}}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-divider"></div>
+        {{#if emptyFlavors}}
+          <div class="alert alert-warning">
+            <span class="glyphicon glyphicon-exclamation-sign warning-s-c"></span> {{i18n 'admin.flavors.empty_flavors_list'}}
+          </div>
+        {{/if}}
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="row app_box app_storage">
+            {{#each flavorsData as |flavors|}}
+              {{flavors-list model=model flavors=flavors}}
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

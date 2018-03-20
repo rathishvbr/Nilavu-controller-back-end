@@ -1,0 +1,263 @@
+{{#conditional-loading-spinner condition=loading size="large" class="spin-Padding-top" }}
+    <div style="padding-top: 30px;">
+        <div class="row">
+            <div class="col-md-6 col-lg-3 col-sm-6">
+                <div class="panel-layout">
+                    <div class="panel-box panel-shadow">
+
+                        <div class="panel-content bg-blue">
+
+                            <i class="font-size-35 glyphicon glyphicon-user"></i>
+                        </div>
+                        <div class="panel-content pad15A bg-white">
+                            <div class="center-vertical">
+
+                                <ul class="center-content list-group list-group-separator row mrg0A">
+                                    <li class="col-md-6">
+                                        <b>
+                                     {{#link-to 'adminUsersList.show' 'active'}}{{user_count}}{{/link-to}}
+                                        </b>
+                                        <p class="font-gray">Users</p>
+                                    </li>
+                                    <li class="col-md-6">
+                                        <b>{{admin_count}}</b>
+                                        <p class="font-gray">Admins</p>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3 col-sm-6">
+
+                <div class="panel-layout ">
+                    <div class="panel-box panel-shadow">
+
+                        <div class="panel-content bg-green">
+
+                            <i class="font-size-35 glyphicon glyphicon-cloud"></i>
+
+                        </div>
+                        <div class="panel-content pad15A bg-white">
+                            <div class="center-vertical">
+
+                                <ul class="center-content list-group list-group-separator row mrg0A">
+                                    <li class="col-md-12">
+                                        <b>{{vm_count}}</b>
+                                        <p class="font-gray">{{i18n 'admin.dashboard.vm_count'}}</p>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-lg-3 col-sm-6">
+
+                <div class="panel-layout ">
+                    <div class="panel-box panel-shadow">
+
+                        <div class="panel-content bg-yellow">
+
+                            <i class="font-size-35 glyphicon glyphicon-tasks"></i>
+
+                        </div>
+                        <div class="panel-content pad15A bg-white">
+                            <div class="center-vertical">
+
+                                <ul class="center-content list-group list-group-separator row mrg0A">
+                                    <li class="col-md-6">
+                                        <b>{{bitnami_count}}</b>
+                                        <p class="font-gray">Bitnami</p>
+                                    </li>
+                                    <li class="col-md-6">
+                                        <b>{{vertice_package_count}}</b>
+                                        <p class="font-gray">Others</p>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-lg-3 col-sm-6">
+
+                <div class="panel-layout ">
+                    <div class="panel-box panel-shadow">
+
+                        <div class="panel-content bg-lpink">
+
+                            <i class="font-size-35 glyphicon glyphicon-th-large"></i>
+
+                        </div>
+                        <div class="panel-content pad15A bg-white">
+                            <div class="center-vertical">
+
+                                <ul class="center-content list-group list-group-separator row mrg0A">
+                                    <li class="col-md-5">
+                                        <b>{{container_count}}</b>
+                                        <p class="font-gray">Containers</p>
+                                    </li>
+                                    <li class="col-md-7">
+                                        <b>{{custom_count}}</b>
+                                        <p class="font-gray">Custom Apps</p>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="panel panel-shadow">
+        <div class="panel-body">
+            <h3 class="title-hero">
+                Reports
+            </h3>
+            <div class="dashboard-stats" style="margin-right: 0px;">
+
+                <table class="table table-condensed table-hover th-color-b" style="border: 1px solid #decdde;">
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>{{i18n 'admin.dashboard.reports.today'}}</th>
+                            <th>{{i18n 'admin.dashboard.reports.yesterday'}}</th>
+                            <th>{{i18n 'admin.dashboard.reports.last_7_days'}}</th>
+                            <th>{{i18n 'admin.dashboard.reports.last_30_days'}}</th>
+                            <th>{{i18n 'admin.dashboard.reports.all'}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each global_reports as |r|}}
+                            {{admin-report-counts report=r regions=regions}}
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8" style="padding-left: 0px;">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-shadow">
+                    <div class="panel-body">
+                        <h3 class="title-hero">
+                     {{i18n 'admin.dashboard.sales.graph_title'}}
+                 </h3>
+                 {{#if empty_graph}}
+                     <span class="pull-left no-record-msg">{{i18n 'admin.dashboard.launches.message_no_data'}}</span>
+                 {{else}}
+                     {{admin-graph model=title rowvalues=rowvalues}}
+                 {{/if}}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-shadow">
+                    <div class="panel-body">
+                        <h3 class="title-hero">{{i18n 'admin.dashboard.populardot.title'}}</h3>
+                        {{#if popular_vitual_machine_empty}}
+                            <span class="pull-left no-record-msg">{{i18n 'admin.dashboard.launches.message_no_data'}}</span>
+                        {{else}}
+                            {{admin-bar popular_vitual_machine=popular_vitual_machine}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-shadow">
+                    <div class="panel-body">
+                        <h3 class="title-hero">{{i18n 'admin.dashboard.recentsignupsdot.title'}}</h3>
+                        <div class="dashboard-stats" style="margin-right: 0px;">
+                            <table class="table table-condensed table-hover th-color-b" style="border: 1px solid #decdde;">
+                                <tbody>
+                                    {{#if recentsignups_empty}}
+                                        <span class="pull-left no-record-msg">{{i18n 'admin.dashboard.launches.message_no_data'}}</span>
+                                    {{else}}
+                                        {{#each recentsignups as |lastsignup|}}
+                                            {{recent-signup-list lastsignup=lastsignup}}
+                                        {{/each}}
+                                    {{/if}}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" style="padding-right: 0px;">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-shadow">
+                    <div class="panel-body">
+                        <h3 class="title-hero">{{i18n 'admin.dashboard.popularappsdot.title'}}</h3>
+                        {{#if popularapps_empty}}
+                            <span class="pull-left no-record-msg">{{i18n 'admin.dashboard.launches.message_no_data'}}</span>
+                        {{else}}
+                            {{admin-pie popularapps=popularapps}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="panel panel-shadow">
+                    <div class="panel-body">
+                        <h3 class="title-hero">{{i18n 'admin.dashboard.recentlaunchesdot.title'}}</h3>
+                        <div class="">
+                            <div class="{{recentlaunches_empty_hight}} timeline-box timeline-box-left v-scroll">
+                                {{#if recentlaunches_empty}}
+                                    <span class="pull-left no-record-msg">{{i18n 'admin.dashboard.launches.message_no_data'}}</span>
+                                {{else}}
+                                    {{#each recentlaunches as |recentlaunch|}}
+                                        {{recent-launches-list recentlaunch=recentlaunch}}
+                                    {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='clearfix'></div>
+
+    <div class="pull-right">
+        <div class="pull-right">{{i18n 'admin.dashboard.last_updated'}} {{updatedTimestamp}}</div>
+        <div class='clearfix'></div>
+    </div>
+    <div class='clearfix'></div>
+{{/conditional-loading-spinner}}

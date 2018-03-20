@@ -1,0 +1,35 @@
+.herobox {
+    margin: 10px auto;
+    font-size: 120%;
+    line-height: 1.2;
+}
+.herobox .hero-content {
+    background-color: rgba(220,220,220,0.1);
+    padding-left: 10px;
+}
+.menu-box {
+    margin: 10px 5px 0 0;
+    color: #FFFFFF;
+    // background-color: #e45735;
+    background-color: #507a8e;
+    transition: background-color 0.3s,color 0.15s,box-shadow 0.3s,opacity 0.3s;
+    -webkit-user-select: none;
+    border: none;
+    display: inline-block;
+    outline: 0;
+    padding: 6px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none!important;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+a.menu-box:hover {
+    color: #333 !important;
+}
+.menu-box-disabled {
+ pointer-events: none;
+ cursor: default;
+ background-color: #c7c7c7 !important;
+}

@@ -1,0 +1,135 @@
+// base styles for every modal popup used in Discourse
+
+.modal-middle-container {
+  display:table-cell;
+  vertical-align: middle;
+}
+
+// Hardcode to be the same as before for now. I would recommend not using bootbox, or finding a way so the html structure can be the same
+.bootbox.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1050;
+  overflow: auto;
+  width: 610px;
+  height: 30%;
+  margin: -250px 0 0 -305px;
+  background-color: $secondary;
+  border: 1px solid dark-light-diff($primary, $secondary, 90%, -60%);
+
+  box-shadow: 0 3px 7px rgba(0,0,0, .8);
+  background-clip: padding-box;
+}
+
+.modal.in {
+    -webkit-animation: fade .25s;
+    animation: fade .25s;
+}
+
+.modal-footer {
+    padding: 19px 20px 20px;
+    margin-top: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+.modal-footer:after,
+.modal-footer:before {
+    display: table;
+    content: " ";
+}
+.modal-footer:after {
+    clear: both;
+}
+.modal-footer:after,
+.modal-footer:before {
+    display: table;
+    content: " ";
+}
+.modal-footer:after {
+    clear: both;
+}
+.modal-footer .btn + .btn {
+    margin-bottom: 0;
+    margin-left: 5px;
+}
+.modal-footer .btn-group .btn + .btn {
+    margin-left: -1px;
+}
+.modal-footer .btn-block + .btn-block {
+    margin-left: 0;
+}
+
+.c_modal-footer {
+    border: none;
+    text-align: center;
+}
+.modal-full {
+    width: 100% !important;
+}
+
+.modal-header {
+    min-height: 16.428571429px;
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.modal-header .close {
+    float: right;
+}
+.close {
+  float: right;
+  text-decoration: none;
+  color: dark-light-choose(scale-color($primary, $lightness: 35%), scale-color($secondary, $lightness: 65%));
+  cursor: pointer;
+  &:hover {
+    color: $primary;
+  }
+}
+
+.modal-title {
+    margin: 0;
+    line-height: 1.428571429;
+}
+// used in the new launcher modal title
+.modal-title h1 {
+    text-align: center;
+    margin-bottom: 3px;
+}
+
+
+.modal {
+  .category-combobox {
+    width: 100%!important;
+
+    .select2-drop {
+      left: -9000px;
+      width: 100%!important;
+    }
+    .select2-search input {
+      width: 100%!important;
+    }
+  }
+}
+
+.edit-category-modal {
+  &.full .modal-body {
+        height: 100%;
+        padding-left: 15px;
+        padding-bottom: 0;
+    }
+    &.medium .modal-body {
+        height: 572px;
+    }
+    &.small .modal-body {
+        height: 255px;
+    }
+}
+
+.modal-wide {
+    width: 60% !important;
+}
+.modal-tab {
+    // position: absolute;
+    width: 100%;
+}

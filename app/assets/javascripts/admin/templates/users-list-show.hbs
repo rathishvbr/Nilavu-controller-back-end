@@ -1,0 +1,82 @@
+{{#conditional-loading-spinner condition=loading size="large"}}
+
+{{#if hasSelection}}
+  <div id='selected-controls'>
+    <button {{action "approveUsers"}} class='btn'>{{count-i18n key="admin.users.approved_selected" count=selectedCount}}</button>
+    <button {{action "rejectUsers"}}  class='btn btn-danger'>{{count-i18n key="admin.users.reject_selected" count=selectedCount}}</button>
+  </div>
+{{/if}}
+
+<div class="admin-title">
+  <div class="col-md-10">
+    <h2>{{title}}</h2>
+  </div>
+  <!-- <div class='col-md-2 pull-right'>
+    {{text-field value=listFilter placeholder=searchHint}}
+  </div> -->
+</div>
+
+
+{{#conditional-loading-spinner condition=refreshing}}
+  {{#if model}}
+    <table class='table' style="border: 1px solid #decdde;">
+      <tr>
+        {{#if showApproval}}
+          <th>{{input type="checkbox" checked=selectAll}}</th>
+        {{/if}}
+        <!-- <th>&nbsp;</th> -->
+        <!-- <th>{{i18n 'username'}}</th> -->
+        <th>{{i18n 'admin.users.email'}}</th>
+        <th>{{i18n 'admin.users.first_name'}}</th>
+        <th>{{i18n 'admin.users.phone'}}</th>
+        <th>{{i18n 'admin.users.last_seen_at'}}</th>
+        <th>{{i18n 'admin.users.last_launched_at'}}</th>
+        <th>{{i18n 'admin.users.ip'}}</th>
+        <th>{{i18n 'admin.users.created_at'}}</th>
+        {{#if showApproval}}
+          <th>{{i18n 'admin.users.approved'}}</th>
+        {{/if}}
+        <th>&nbsp;</th>
+      </tr>
+
+      {{#each user in model}}
+        <tr {{bind-attr class="user.selected user.active::not-activated"}}>
+          {{#if controller.showApproval}}
+            <td>
+              {{#if user.can_approve}}
+                {{input type="checkbox" checked=user.selected}}
+              {{/if}}
+            </td>
+          {{/if}}
+          <!-- <td>{{#link-to 'adminUser' user}}{{unbound user.username}}{{/link-to}}</td> -->
+          <td>{{#link-to 'adminUser' user}}{{unbound user.email}}{{/link-to}}</td>
+          <td>{{{unbound user.name.first_name}}}</td>
+          <td>{{{unbound user.phone.phone}}}</td>
+          <td>{{{unbound user.dates.previous_visit_at}}}</td>
+          <td>{{{unbound user.dates.last_posted_at}}}</td>
+          <td>{{{unbound user.registration_ip_address}}}</td>
+
+          <td>{{{unbound user.dates.created_at}}}</td>
+
+          {{#if showApproval}}
+          <td>
+            {{#if user.approval.approved}}
+              {{i18n 'yes_value'}}
+            {{else}}
+              {{i18n 'no_value'}}
+            {{/if}}
+          </td>
+          {{/if}}
+          <td>
+            {{#if user.admin}}<i class="fa fa-shield" title="{{i18n 'admin.title'}}"></i>{{/if}}
+            {{#if user.moderator}}<i class="fa fa-shield" title="{{i18n 'admin.moderator'}}"></i>{{/if}}
+          </td>
+        </tr>
+      {{/each}}
+
+    </table>
+  {{else}}
+    <p class="pad_l17">{{i18n 'search.no_results'}}</p>
+  {{/if}}
+  {{/conditional-loading-spinner}}
+{{/conditional-loading-spinner}}

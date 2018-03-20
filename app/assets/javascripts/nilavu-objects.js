@@ -1,0 +1,2 @@
+window.Nilavu = {};
+Nilavu.SiteSettings = {};

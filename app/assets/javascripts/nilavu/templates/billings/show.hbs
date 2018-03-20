@@ -1,0 +1,209 @@
+<div class="ember-view">
+    <div class="rt-box col-xs-12 c_height_5">
+        {{topic-list-header currentUser=currentUser title=title nameEnabled=nameEnabled name=name subTitleEnabled=subTitleEnabled subTitle=subTitle}}
+        <div class="bottom-divider"></div>
+        <div class="">
+            <div class='contents'>
+                <div class="row c_pading-b15">
+                    <div class="portlet-body-head">
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 cat_title">
+
+                            <span class="darker-black">
+                            <i class="glyphicon glyphicon-briefcase billing-icon"></i>
+                           </span>
+
+                        </div>
+
+                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9 cat_title" style="left: -68px;">
+
+                            <span class="darker-black">
+                             <span class="title">
+                              {{i18n 'billing.your_funds'}}
+                             </span>
+                            </span>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="bottom-divider"></div>
+                <div class="row c_pading-b15">
+                    {{billing-usage model=model unitFlav=unitFlav}}
+                    <div class="col-md-8 help_center_left_right usg  c_pading-b15">
+                        <h3 class="center bill-title">{{i18n 'billing.estimator'}}</h3>
+                        <div class="center sub-title">{{i18n 'billing.regions'}}</div>
+                        <div class="center sub-title">{{i18n 'billing.flavors'}}</div>
+                        {{billing-region billingRegionOption=billingRegionOption model=model regions=regions}}
+                        <br> {{billing-flavor model=model flavors=flavors flavorOption=flavorOption}}
+                        <div style="text-align: center;" class="table-condensed">
+                            {{billing-quotas model=model unitFlav=unitFlav}}
+                            <div class="col-md-4 pad_0">
+                                <table class="table usg_table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 30%;text-align:center;">{{i18n 'billing.type'}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <!--Any span.blue text is supposed to be editable by the user.
+                                  with the numbers (eg. 1024) -> it turns into a textbox that only accepts numbers.
+                                  If MB/SSD is clicked then you will be able to see 'MB/GB/TB' for MB & SSD/HDD for SSD in a
+                                  dropdown. Once the user enters the new number then the Usage estimator is updated.
+                                  Also with CORES - the way it works is it's bundled with RAM.
+                                  This is to avoid heavy CPU abuse.
+                                  It's a preset of something like 1 vCPU per 2048MB ram, anything under 2048 gets 1vCPU.  -->
+                                            <td>{{i18n 'billing.b_ram'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{i18n 'billing.b_cpu'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>
+                                                    <select>
+                                                        <option value="SSD">{{i18n 'billing.b_ssd'}}</option>
+                                                        <option value="HDD">{{i18n 'billing.b_hsd'}}</option>
+
+                                                    </select>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{i18n 'billing.b_bandwidth'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bottom-b">{{i18n 'billing.b_ip_address'}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            {{billing-unit-monthly-cost model=model unitFlav=unitFlav}}
+                        </div>
+                        {{billing-unit-total-cost model=model unitFlav=unitFlav}}
+                    </div>
+
+                    <div class="row">
+                        <div class="margin_30 ">
+                            <div class=" card-details ">
+                                <div class="row ">
+                                    <div class="col-md-6  pay_via">
+                                        <h2>
+                                            <i class="glyphicon glyphicon-credit-card billing-icon-color"></i>Proceed to payment
+                                        </h2>
+                                        <div class="bottom-divider  settings_top"></div>
+                                        <!--
+                                 One click login into WHMCS page: 'add funds'.
+                                -->
+
+                                        <div class="center-btn">
+                                            {{#if billingsOFF}}
+                                                <div class="alert alert-danger" role="alert">{{i18n 'billing.billings_of_alert_text'}}</div>
+                                            {{/if}}
+                                            {{#if enableHourlyBilling}}
+                                                <button class="btn btn-primary btn-credit-payment" {{bind-attr style=fillWidth}} id="whmcs-payment-link" {{bind-attr disabled="submitFundsDisabled"}} {{action "addFunds"}}>
+                                                {{i18n 'billing.add_credit'}}
+                                                <span class="pull-right">
+                                                    {{conditional-loading-spinner condition=formFundSubmitted size="large"}}
+                                                </span>
+                                            </button>
+                                            {{/if}}
+                                            {{#if enableMonthlyBilling}}
+                                                <button class="btn btn-success btn-order-now pull-right" {{bind-attr style=fillWidth}} id="whmcs-payment-link" {{bind-attr disabled="submitPurchaseDisabled"}} {{action "orderNow"}}>
+                                                {{i18n 'billing.purchase'}}
+                                                <span class="pull-right">
+                                                    {{conditional-loading-spinner condition=formPurchaseSubmitted size="large"}}
+                                                </span>
+                                            </button>
+                                            {{/if}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 offset-md-1 help_center_left_right">
+                                        <h2>
+                                            <i class="glyphicon glyphicon-plus-sign billing-icon-color"></i>
+                                            <b>{{i18n 'billing.help_center'}}</b>
+                                        </h2>
+                                        <div class="bottom-divider  settings_top"></div>
+                                        <p>If you need assistance while placing order, contact one of our below support team by phone or email.</p>
+                                        <h4>
+                                            <i class="glyphicon glyphicon-earphone"></i>
+                                            {{supportPhoneNumber}}
+                                            /
+                                            <i class="glyphicon glyphicon-envelope"></i>
+                                          {{supportEmail}}
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 row">
+                                    <h2>
+                                        <i class="glyphicon glyphicon-refresh billing-icon-color"></i>
+                                        Billing Transactions :</h2>
+                                </div>
+                                <!--HERE Let's use the new Logs we are using for Torpedo.
+                         With two forms of alerts:   'Usage' &  'Credit'.
+                         Whenever a user adds credit, it should be logged here.
+                         And for every service the user has there is a log of 'Usage'.
+                         The usage will store things such as 'Torpedo ID', 'Torpedo IP', 'Name', 'Cost per hour',
+                         'Running for' x (hours/days/months), State (active or 'complete' which is what a deleted
+                         vm becomes).
+                         'Total Cost'. When aligning the data, active VM's must always prioritize over
+                         'Completed' VM's in the log.
+                         That means, whenever a VM becomes complete - it goes under the active VM's.-->
+                                <div class="bottom-divider  settings_top"></div>
+                                <div class="table-left-h">
+                                    <table class='table report' style="border: 1px solid #decdde;">
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Status</th>
+                                            <th>Created At</th>
+                                        </tr>
+
+                                        {{#if transactionEmpty}}
+                                            <tr>
+                                                <td>
+                                                    <h2>{{emptyTransactions}}</h2></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+
+                                            </tr>
+                                        {{else}}
+
+                                            {{#each transactions as |transaction|}}
+                                                {{billing-transaction transaction=transaction}}
+                                            {{/each}}
+                                        {{/if}}
+                                    </table>
+                                </div>
+
+                            </div>
+                            <!--
+                    Let's also place a monthly usage graph here, which displays the users
+                    previous months usages only when they have been an active subscriber for a
+                    minimum of 30 days. So it will show each months usage for upto a whole year.
+                    Once that occurs, then a new graph is placed on top for 'yearly' usage which
+                    logs that years spending. -->
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="margin_30 ">
+                            <div class="bottom-divider"></div>
+                            <div class="col-md-12 row card-details">
+                                <h2>
+                           <i class="glyphicon glyphicon-refresh billing-icon-color"></i>
+                           {{i18n 'billing.table_billing_history'}}
+                          </h2>
+                            </div>
+                            {{billing-history model=model}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

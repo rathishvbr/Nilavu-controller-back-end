@@ -1,0 +1,35 @@
+<div class="row">
+    <h3 class="head_paint">{{i18n 'launcher.summarize_basics'}} - {{category.regionoption}}</h3>
+    <div class="bottom-divider"></div>
+</div>
+
+<div class="row pad_t25" style="padding-left: 20px;">
+    <div class="col-md-6  pad_0">
+        <h6 class="fw_600">{{i18n 'launcher.summarize_hostname'}}</h6>
+    </div>
+    <div class="col-md-6  pad_0">
+        {{category.subdomain}}.{{category.domain}}
+    </div>
+</div>
+<br>
+<div class="row">
+    <h3 class="head_paint">{{i18n 'launcher.summarize_settings'}}</h3>
+    <div class="bottom-divider"></div>
+</div>
+
+<div class="row pad_t25" style="padding-left: 20px;">
+    <div class="col-md-6 pad_0">
+        <h6 class="fw_600">{{i18n 'launcher.summarize_flavor'}}</h6>
+    </div>
+    <div class="col-md-6  pad_0">
+        {{category.unitoption.name}} -{{category.unitoption.flavor.ram}} {{i18n 'number.human.storage_units.units.gb'}} - {{category.unitoption.flavor.cpu}} {{i18n 'launcher.launching_Core'}} - {{category.unitoption.flavor.disk}} {{i18n 'number.human.storage_units.units.gb'}} /{{category.storageoption}}
+    </div>
+</div>
+<div class="row pad_t25" style="padding-left: 20px;">
+    <div class="col-md-6  pad_0">
+        <h6 class="fw_600">{{i18n 'launcher.summarize_operating_system'}}</h6>
+    </div>
+    <div class="col-md-6  pad_0">
+        {{category.versionoption}}
+    </div>
+</div>

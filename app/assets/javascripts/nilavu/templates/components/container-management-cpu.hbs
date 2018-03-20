@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-6 info-center">
+        <table>
+            <tr>
+                <td>
+                    <h5><b>{{content_cpu_cores}}</b></h5></td>
+                <td>{{cpu_cores}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="ssh-well-without-background">
+    <div class="row">
+        <div class="col-md-12 info">
+            {{container-chart-cpu model=model selectedTab=selectedTab}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<form>
+    <div class="modal-body">
+        <div class="row pad_9">
+            <div class="col-md-11 pad_l21">
+                    <label for='username-or-email'>{{i18n 'vm_management.disks.model_label'}}</label>
+                    {{text-field value=size placeholderKey="vm_management.disks.model_placeholder" class="form-control" id="diskVolume"}}
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 pad_l1">
+                    {{input-tip validation=sizeValidation}}
+                </div>
+            </div>
+            <div class="col-md-1" style="padding-top: 6%;">
+                    <span>GB</span>
+            </div>
+
+        </div>
+        <div class="col-md-12">
+            <button class='btn btn-success col-lg-12' {{bind-attr disabled="submitDisabled"}} {{action "submit"}}>
+                {{i18n 'vm_management.disks.model_button'}}
+                <span class="pull-right">
+                {{conditional-loading-spinner condition=addDiskSpinner size="large"}}
+                </span>
+            </button>
+        </div>
+        <div class="clear"></div>
+    </div>
+</form>

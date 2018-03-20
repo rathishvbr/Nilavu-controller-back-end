@@ -1,0 +1,9 @@
+<div class="container-fluid main-cover vm">
+    <div class="row">
+        {{#unless loading}}
+            <div class="container" id="list-container">
+                {{outlet "list-container"}}
+            </div>
+        {{/unless}}
+    </div>
+</div>

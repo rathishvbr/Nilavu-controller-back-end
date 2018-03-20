@@ -1,0 +1,23 @@
+<div class="table-left-h">
+    <table class='table report sort-icon-mix' style="border: 1px solid #decdde;">
+        <tr>
+            <th {{action "sortBy" "name"}}>{{i18n 'admin.dashboard.launches.name'}}<span class="glyphicon glyphicon-sort"></span></th>
+            <th {{action "sortBy" "status"}}>{{i18n 'admin.dashboard.launches.status'}}<span class="glyphicon glyphicon-sort"></span></th>
+            <th {{action "sortBy" "number_of_hours"}}>{{i18n 'admin.dashboard.launches.number_of_hours'}}<span class="glyphicon glyphicon-sort"></span></th>
+            <th>{{model.xaxis}}</th>
+            <th>{{model.yaxis}}</th>
+        </tr>
+        {{#each reportSales as |row|}}
+            <tr>
+                <td>{{row.name}}</td>
+                <td>{{row.status}}</td>
+                <td>{{row.number_of_hours}}</td>
+                <td>{{row.x}}</td>
+                <td>{{row.y}}</td>
+            </tr>
+        {{/each}}
+    </table>
+    {{#if showWhenEmpty}}
+        <span class="pull-left no-record-msg">{{i18n 'admin.dashboard.launches.message_no_record'}}</span>
+    {{/if}}
+</div>

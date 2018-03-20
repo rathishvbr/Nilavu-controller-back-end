@@ -1,0 +1,20 @@
+<div class="table-left-h">
+    <table class='table report sort-icon-mix' style="border: 1px solid #decdde;">
+        <tr>
+            <th {{action "sortBy" "name"}}>{{i18n 'admin.dashboard.backups.name'}}<span class="glyphicon glyphicon-sort"></span></th>
+            <th {{action "sortBy" "account_id"}}>{{i18n 'admin.dashboard.backups.account_id'}}<span class="glyphicon glyphicon-sort"></span></th>
+            <th>{{i18n 'admin.dashboard.backups.type'}}</th>
+            <th {{action "sortBy" "status"}}>{{i18n 'admin.dashboard.backups.status'}}<span class="glyphicon glyphicon-sort"></span></th>
+            <th {{action "sortBy" "number_of_hours"}}>{{i18n 'admin.dashboard.backups.number_of_hours'}}<span class="glyphicon glyphicon-sort"></span></th>
+            <th {{action "sortBy" "created_at"}}>{{i18n 'admin.dashboard.backups.created_at'}}<span class="glyphicon glyphicon-sort"></span></th>
+            <th>{{i18n 'admin.dashboard.backups.action'}}</th>
+        </tr>
+        {{#each reportBackups as |row|}}
+            {{report-backup refreshAfterAction="refreshAfterDelete" model=model row=row}}
+        {{/each}}
+    </table>
+    {{#if showWhenEmpty}}
+        <span class="pull-left no-record-msg">{{i18n 'admin.dashboard.launches.message_no_record'}}</span>
+    {{/if}}
+   </div>
+<!-- </div> -->

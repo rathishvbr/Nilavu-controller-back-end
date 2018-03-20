@@ -1,0 +1,44 @@
+
+.iso-without-background {
+    min-height: 20px;
+    padding: 19px;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.add-box {
+    color: #FFFFFF;
+    background-color: #0275d8;
+    transition: background-color 0.3s,color 0.15s,box-shadow 0.3s,opacity 0.3s;
+    -webkit-user-select: none;
+    border: none;
+    display: inline-block;
+    outline: 0;
+    padding: 2px 4px 0px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none!important;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.add-box-disabled {
+    color: #FFFFFF;
+    background-color: #c7c7c7 !important;
+    transition: background-color 0.3s,color 0.15s,box-shadow 0.3s,opacity 0.3s;
+    -webkit-user-select: none;
+    border: none;
+    display: inline-block;
+    outline: 0;
+    padding: 2px 4px 0px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none!important;
+    text-align: center;
+    pointer-events: none;
+    cursor: default;
+    white-space: nowrap;
+}

@@ -1,0 +1,68 @@
+<div class="rt-box col-xs-12 c_height_5">
+    {{topic-list-header currentUser=currentUser title=title nameEnabled=nameEnabled name=name subTitleEnabled=subTitleEnabled subTitle=subTitle}}
+    <div class="bottom-divider"></div>
+
+        <div class="row c_pading-b25" style="padding-top: 21px;">
+            {{#if validState}}
+                <span class="pull-left col-md-2">
+            <button type="button" class="btn-vertice btn btn-dark pull-left " {{action "refresh"}}>
+                {{#conditional-loading-spinner condition=showRefreshSpinner size="large" }}
+                    <span class="glyphicon glyphicon-refresh"></span>
+                {{/conditional-loading-spinner}}
+                </button>
+                </span>
+                <span class="pull-left col-md-8 text-center">
+                  {{#link-to "shell" (query-params name=title id=model.id asms_id=model.asms_id) target="_blank" }}
+                    <button type="button" class="btn-vertice btn btn-info" {{bind-attr disabled="vncDisabled"}}>
+                    <span class="glyphicon glyphicon-random"></span> Console
+                    </button>
+                    {{/link-to}}
+                <button type="button" class="btn-vertice btn btn-dark" {{action "restart" }} {{bind-attr disabled="restartDisabled"}}>
+                    <span class="glyphicon glyphicon-repeat"></span> Reboot
+                    <span class="pull-right">
+                    {{conditional-loading-spinner condition=showRebootSpinner size="large"}}
+                </span>
+                </button>
+                <button type="button" class="btn-vertice btn btn-dark" {{action "stop"}} {{bind-attr disabled="stopDisabled"}}>
+                    <span class="glyphicon glyphicon-pause"></span> Shutdown
+                    <span class="pull-right">
+                    {{conditional-loading-spinner condition=showStopSpinner size="large"}}
+                </span>
+                </button>
+                <button type="button" class="btn-vertice btn btn-info" {{action "start"}} {{bind-attr disabled="startDisabled"}}>
+                    <span class="glyphicon glyphicon-play"></span> Start
+                    <span class="pull-right">
+                    {{conditional-loading-spinner condition=showStartSpinner size="large"}}
+                </span>
+                </button>
+                </span>
+                <span class="pull-right col-md-2">
+
+            <button type="button" class="btn-vertice btn btn-danger pull-right" {{action "destroy"}}>
+                <span class="glyphicon glyphicon-trash"></span>
+                <span class="pull-right">
+                    {{conditional-loading-spinner condition=showDeleteSpinner size="large"}}
+                </span>
+                </button>
+                </span>
+            {{/if}}
+        </div>
+    <section class="vm">
+      {{#if validState}}
+        <ul class="tabs">
+            {{vm-management-tab panels=panels selectedTab=selectedTab tab="info"}}
+            {{container-management-tab panels=panels selectedTab=selectedTab tab="network"}}
+            {{container-management-tab panels=panels selectedTab=selectedTab tab="cpu"}}
+            {{container-management-tab panels=panels selectedTab=selectedTab tab="ram"}}
+            {{vm-management-tab panels=panels selectedTab=selectedTab tab="logs"}}
+        </ul>
+        <div class="vm-modal-body">
+            {{#each panels as |tab|}}
+                {{component tab selectedTab=selectedTab model=model}}
+            {{/each}}
+        </div>
+        {{else}}
+        {{vm-management-invalid}}
+        {{/if}}
+    </section>
+</div>

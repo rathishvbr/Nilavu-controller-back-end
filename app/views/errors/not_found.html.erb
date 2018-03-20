@@ -1,0 +1,38 @@
+<!--
+** Copyright [2013-2016] [Megam Systems]
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+** http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+-->
+<% provide(:title, 'Not Found') %>
+<div id="content">
+  <div class="container">
+    <div class='row'>
+      <div class=" container">
+        <div class="col-md-12 row error-page">
+          <h2>404</h2>
+          <h3><%= t('errors.oops') %></h3>
+          <P><%= t('errors.noaccess') %></P>
+          <img src="https://s3-ap-southeast-1.amazonaws.com/megampub/images/404/mars.png" class="img-responsive"></div>
+      </div>
+      <div class="col-md-12 row error-page">
+      <div class="panel panel-success">
+        <p>
+          <a href='javascript:history.back();'><%= t('back') %></a>
+          <a href='/'><%= t('home') %> <%= t('or') %>
+          <a href="<%= SiteSetting.support_url %>"><%= t('report_this_problem') %></a>
+        </p>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

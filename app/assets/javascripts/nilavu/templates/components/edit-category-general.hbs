@@ -1,0 +1,21 @@
+<section class="step1">
+    <div class="row">
+        <h3 class="seperator">{{i18n 'launcher.domain_name'}}</h3>
+        <div class="bottom-divider"></div>
+    </div>
+
+    <div class="row pad_t25" id="domainSelector">
+        {{text-field type="domain" value=subDomain placeholderKey="launcher.subdomain" class="roundText" id="new-launch" disabled=false name="sub_domain" autofocus="autofocus"}}
+        <span class="domain-tag">.{{domain}}</span>
+    </div>
+
+    {{#if showSubRegions}}
+        {{launching-regions regions=regions regionable=regionOption}}
+    {{/if}}
+
+    <div class="hideme2">
+      {{#if regionOption}}
+          {{launching-resources category=category resources=resources disableDisk=disableDisk flavorsData=flavorsData resourceable=resourceOption storageable=storageOption emptyflav=emptyflav}}
+      {{/if}}
+    </div>
+</section>

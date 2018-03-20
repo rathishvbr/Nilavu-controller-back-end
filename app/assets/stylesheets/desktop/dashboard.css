@@ -1,0 +1,34 @@
+.gridViewVisible {
+  display: grid;
+}
+
+.gridViewHidden {
+  display: none;
+}
+
+.listViewVisible {
+  display: grid;
+}
+
+.listViewHidden {
+  display: none;
+}
+
+.title_padding {
+  padding-top: 20px;
+  font-weight: 900;
+  color: #949292;
+}
+
+.topic_title_link {
+  font-size: 18px;
+}
+
+
+.cancel {
+   padding-left: 17px;
+}
+
+.capitalize {
+   text-transform: capitalize;
+}

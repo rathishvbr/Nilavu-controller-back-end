@@ -1,0 +1,9 @@
+<div class="row pad_t25 flavor-div-wrapper" id="resourceSelector">
+  {{#if activeISOImages}}
+    {{#each activeImages as |activeImage|}}
+      {{raw-image-chooser name=rawimageRegions activeImage=activeImage rawimagesOption=rawimagesOption  flavourable=selectedImage model=model}}
+    {{/each}}
+  {{else}}
+    No active images!
+  {{/if}}
+</div>

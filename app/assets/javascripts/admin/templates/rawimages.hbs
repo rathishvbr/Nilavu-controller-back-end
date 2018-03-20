@@ -1,0 +1,89 @@
+<div class="ssh-well">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{i18n 'admin.marketplaces.images.mirror_image_title'}}</h1>
+            <p>{{i18n 'admin.marketplaces.images.description'}}</p>
+            <button class="btn btn-success col-md-3 col-xs-12" {{action "toggleMirrorCreation"}}>
+                    {{i18n 'admin.marketplaces.images.add_mirror'}}
+                    <span class="pull-right">
+                        {{conditional-loading-spinner condition=showSpinner size="large"}}
+                    </span>
+            </button>
+        </div>
+    </div>
+</div>
+{{#if isClicked}}
+    <div class="iso-without-background">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group col-md-6">
+                    <label>
+                      {{i18n 'admin.marketplaces.images.enter_name'}}
+                  </label> {{text-field value=isoName placeholderKey="admin.marketplaces.images.name" class="form-control" id="isoname"}}
+                </div>
+                <div class="form-group col-md-6">
+                    <label>
+                      {{i18n 'admin.marketplaces.images.mirror_url'}}
+                  </label> {{text-field value=isoUrl placeholderKey="admin.marketplaces.images.url" class="form-control" id="iso"}}
+                </div>
+                <div class="form-group col-md-6">
+                    <label>
+                      {{i18n 'admin.marketplaces.images.choose_region'}}
+                  </label>
+                  {{regions-chooser subRegionOption=subRegionOption regions=resources model=model}}
+                </div>
+
+                <div class="form-group col-md-6" style="padding-top:30px;">
+                    <button class='btn btn-primary col-lg-12' {{bind-attr disabled="submitDisabled"}} {{action "createRawimages"}}>
+         {{i18n 'admin.marketplaces.images.create_rawimage'}}
+         <span class="pull-right">
+         {{conditional-loading-spinner condition=showSpinner size="large"}}
+         </span>
+     </button>
+                </div>
+                {{#unless resources}}
+                    <div class="form-group col-md-6 alert alert-warning">
+                        <span class="glyphicon glyphicon-exclamation-sign warning-s-c"></span> {{i18n 'admin.marketplaces.images.warning_data'}}
+                    </div>
+                {{/unless}}
+            </div>
+        </div>
+    </div>
+{{/if}}
+<div class="bottom-divider"></div>
+<div class="col-md-6 row card-details">
+    <h2>
+<i class="glyphicon glyphicon-th-list billing-icon-color"></i>
+{{i18n 'admin.marketplaces.images.list_title'}}
+</h2>
+</div>
+{{#unless rawimagesListEmpty}}
+    <span class="pull-right col-md-6" style="padding: 8px 0px">
+<button type="button" class="btn-dark btn_space_del btn pull-right" title = {{btnTitle}} {{action 'getImagesRefresh'}}>
+<span class="glyphicon glyphicon-refresh"></span>
+    </button>
+    </span>
+{{/unless}}
+<div class="table-left-h" style="margin-right: 0px;">
+    {{#conditional-loading-spinner condition=showSpinner size="large" }}
+        <table class="table report instances" style="border: 1px solid #decdde;">
+            <thead>
+                <tr>
+                    <th>{{content_id}} </th>
+                    <th>{{content_name}}</th>
+                    <th>{{content_created_at}}</th>
+                    <th>{{content_status}} </th>
+                    <th>{{content_region}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each sortedRawimages as |rawimage|}}
+                    {{customizing-images-list refresh="getImagesRefresh" rawimage=rawimage}}
+                {{/each}}
+            </tbody>
+        </table>
+        {{#if rawimagesListEmpty}}
+            <span class="pull-left no-record-msg">{{i18n 'admin.dashboard.launches.message_no_record'}} </span>
+        {{/if}}
+    {{/conditional-loading-spinner}}
+</div>

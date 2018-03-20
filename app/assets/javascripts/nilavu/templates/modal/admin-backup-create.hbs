@@ -1,0 +1,32 @@
+  <div class="iso-without-background">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group col-md-6">
+                <label>
+                {{i18n 'admin.dashboard.backups.backup_name'}}
+              </label> {{text-field value=backupname placeholderKey="admin.marketplaces.images.name" class="form-control" id="isoname"}}
+            </div>
+            <div class="form-group col-md-6">
+                <label>
+                  {{i18n 'admin.dashboard.backups.url'}}
+                </label> {{text-field value=backupurl placeholderKey="admin.marketplaces.images.url" class="form-control" id="iso"}}
+            </div>
+            <div class="form-group col-md-6">
+                <label>
+                  {{i18n 'admin.dashboard.backups.choose_region'}}
+              </label>
+              {{regions-chooser subRegionOption=subRegionOption regions=resources model=model}}
+              <!-- {{combo-box valueAttribute="value" content=regionContent value=selectedRegion}} -->
+            </div>
+
+            <div class="form-group col-md-6" style="padding-top:30px;">
+                <button class='btn btn-primary col-lg-12' {{bind-attr disabled="submitDisabled"}} {{action "createBackups"}}>
+                {{i18n 'admin.dashboard.backups.create'}}
+                <span class="pull-right">
+                  {{conditional-loading-spinner condition=takebackupspinner size="large"}}
+                </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

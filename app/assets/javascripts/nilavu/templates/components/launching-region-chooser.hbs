@@ -1,0 +1,7 @@
+{{#if enabledRegion}}
+    {{radio-button value=regionableName name="region_option" selection=regionable style=myStyle }}
+    <b>{{chooserName}}</b>
+{{else}}
+    {{radio-button value=regionableName name="region_option" style=myStyle}}
+    <b>{{value}}</b>
+{{/if}}

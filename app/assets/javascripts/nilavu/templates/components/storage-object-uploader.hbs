@@ -1,0 +1,35 @@
+<table class="table_b_color_grey">
+    <tbody class="files">
+        <tr>
+            <td class="name filename">
+                <span>
+              <i id="objectFormat" {{bind-attr class="objectIcon popIcon"}}></i>
+             <b>{{filekey}}</b><i> {{objectSize}}</i></span></td>
+            <td id= {{formDivId}} class="pull-right">
+                <form action= {{url}} method="post" id= {{formId}} enctype="multipart/form-data">
+                    <input type="hidden" name="key" value= {{filekey}} />
+                    <input type="hidden" name="acl" value= {{storageACL}} />
+                    <input type="hidden" name="content-type" value= {{filecontenttype}} />
+                    <input type="hidden" name="AWSAccessKeyId" value= {{fileaccesskey}} />
+                    <input type="hidden" name="policy" value= {{filepolicy}} />
+                    <input type="hidden" name="signature" value= {{filesignature}} />
+                    <input name="file" type="file" id= {{fileObjectId}} style="display:none" />
+                    <input name="submit" class='btn-vertice btn btn-success' id= {{uploadStartId}} value="Upload" type="submit" />
+                </form>
+            </td>
+            <td>
+                <div class="col-xs-12 col-sm-4 col-md-4 pull-right" id= {{closeIcon}}><i class="close_red"></i></div>
+                <div class="col-xs-12 col-sm-4 col-md-4 pull-right" id= {{successIcon}}><i class="success_icon"></i></div>
+            </td>
+        </tr>
+        <tr>
+            <td id= {{progressId}} class="progress-col">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success progress-bar-striped pad_t6 h_4" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:{{streamPercentage}}">
+                        {{streamPercentage}}
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,13 @@
+<div class="row">
+    <h3 class="seperator">{{i18n 'launcher.select_location'}}</h3>
+    <div class="bottom-divider"></div>
+</div>
+<div class="row pad_t25" id="regionSelector">
+    {{#if regionsWithoutFlavors}}
+        {{#each regionsWithoutFlavors as |r|}}
+            {{launching-region region=r regionable=regionable}}
+        {{/each}}
+    {{else}}
+        <label>{{i18n 'launcher.regions_not_found'}}</label>
+    {{/if}}
+</div>

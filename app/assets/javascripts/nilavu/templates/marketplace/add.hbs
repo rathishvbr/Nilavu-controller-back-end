@@ -1,0 +1,94 @@
+<div class="rt-box col-xs-12 c_height_5">
+  {{topic-list-header currentUser=currentUser title=marketTitle nameEnabled=nameEnabled name=name}}
+  <div class="bottom-divider"></div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row ">
+        <div class="col-md-6">
+          <div class="col-md-6 profile_left_pad_15 profile_align">
+            <label class="label-profile lable-color">{{i18n 'marketplaces.name'}}</label>
+          </div>
+          <div class="col-md-6">
+            {{text-field value=marketplaceName placeholderKey="" class="form-control" id="name"}}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="col-md-6 profile_left_pad_15 profile_align">
+            <label class="label-profile lable-color">  {{i18n 'marketplaces.cat_type'}}</label>
+          </div>
+          <div class="col-md-6">
+            {{combo-box content=categoryType  valueAttribute="value" value=categoryOption}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-12">
+      <div class="row ">
+        <div class="col-md-6">
+          <div class="col-md-6 profile_left_pad_15 profile_align">
+            <label class="label-profile lable-color">{{i18n 'marketplaces.version'}}</label>
+          </div>
+          <div class="col-md-6">
+            {{text-field value=version class="form-control" id="version"}}
+
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="col-md-6 profile_left_pad_15 profile_align">
+            <label class="label-profile lable-color">{{i18n 'marketplaces.image'}}</label>
+          </div>
+          <div class="col-md-6">
+            {{text-field value=image class="form-control" id="image" placeholder="image name"}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="row ">
+        <div class="col-md-6">
+          <div class="col-md-6 profile_left_pad_15 profile_align">
+            <label class="label-profile lable-color">{{i18n 'marketplaces.websiteurl'}}</label>
+          </div>
+          <div class="col-md-6">
+            {{text-field value=websiteURL class="form-control" id="websiteURL" }}
+
+          </div>
+        </div>
+      </div></div>
+    <div class="col-md-12">
+      <div class="row ">
+        <div class="col-md-6">
+          <div class="col-md- profile_left_pad_15 profile_align">
+            <label class="label-profile lable-color">{{i18n 'marketplaces.select_image'}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="row">
+        {{raw-images model=model}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row ">
+<br><br>
+          <div class="row">
+            <div class="col-md-6">
+              <button class='btn btn-primary  pull-right col-md-5 col-xs-12' {{bind-attr disabled="submitDisabled"}} {{action "createSaaSProduct"}}>
+          {{i18n 'marketplaces.create_marketplace'}}
+          <span class="pull-right">
+          {{conditional-loading-spinner condition=showSpinner size="large"}}
+          </span>
+            </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <br><br>
+  </div>
+</div>

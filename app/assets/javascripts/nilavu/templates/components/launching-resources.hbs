@@ -1,0 +1,37 @@
+<div class="row">
+    <h3 class="seperator">{{i18n 'launcher.resources'}}</h3>
+    <div class="bottom-divider"></div>
+</div>
+
+{{#unless emptyflav}}
+    <div class="row pad_t25" id="storageSelector">
+        <div class="btn-storage-container">
+            {{#unless diskDisableHDD}}
+                <div style= {{hddStyle}}>
+                    {{launching-storage-chooser name='HDD' storageable=storageable}}
+                </div>
+            {{/unless}}
+            {{#unless diskDisableSSD}}
+                <div style= {{ssdStyle}}>
+                    {{launching-storage-chooser name='SSD' storageable=storageable}}
+                </div>
+            {{/unless}}
+        </div>
+    </div>
+{{/unless}}
+
+
+<div class="row pad_t25 flavor-div-wrapper" id="resourceSelector">
+    {{#if resources}}
+        {{#each resources as |resource|}}
+            {{launching-resource category=category resource=resource flavors=flavors flavorsData=flavorsData resourceable=resourceable}}
+        {{/each}}
+    {{/if}}
+
+    {{#if emptyflav}}
+        <div class="alert alert-warning">
+            <span class="glyphicon glyphicon-exclamation-sign warning-s-c"></span> {{i18n 'launcher.resources_empty'}}
+        </div>
+    {{/if}}
+
+</div>

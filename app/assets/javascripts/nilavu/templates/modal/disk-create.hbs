@@ -1,0 +1,36 @@
+<form>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-10 pad_l21">
+                <h6><b>{{i18n 'vm_management.disks.model_label'}}</b></h6>
+                {{text-field value=size placeholderKey="vm_management.disks.model_placeholder" class="form-control" id="diskVolume"}}
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 pad_l1">
+                    {{input-tip validation=sizeValidation}}
+                </div>
+
+            </div>
+            <div class="col-md-2" style="padding-top: 6%;">
+                <span>GB &nbsp;&nbsp;&le; {{diskMaxSize}} GB</span>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6 pad_l21">
+                {{#if allowedSize}}
+                    <h6><b>{{i18n 'launcher.launching_cost'}}</b></h6>
+                    <h6><span>${{storageMonthCost}}</span>/mo
+                 <b><span class="smaller">(${{storageHourlyCost}}/hr)</span></b></h6>
+                {{/if}}
+            </div>
+            <div class="col-md-4 pull-right">
+                <button class='btn btn-success col-lg-12' {{bind-attr disabled="submitDisabled"}} {{action "submit"}}>
+                {{i18n 'vm_management.disks.model_button'}}
+                <span class="pull-right">
+                {{conditional-loading-spinner condition=addDiskSpinner size="large"}}
+                </span>
+            </button>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</form>

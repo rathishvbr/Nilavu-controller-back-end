@@ -1,0 +1,12 @@
+<div class="row">
+    <h3 class="head_paint">{{i18n 'launcher.select_networking'}}</h3>
+    <div class="bottom-divider"></div>
+</div>
+<div class="row pad_t25" style="padding-left: 20px;">
+    <div class="col-md-12  pad_0">
+        {{#each networks as |n|}}
+            {{launching-network-chooser network=n category=category}}
+        {{/each}}
+    </div>
+</div>
+<br>

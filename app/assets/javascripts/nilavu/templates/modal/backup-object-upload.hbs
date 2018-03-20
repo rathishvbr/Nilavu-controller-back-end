@@ -1,0 +1,36 @@
+<div class="modal-body app_body upload_app_body_backup">
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table borderless tb_upload">
+                <tbody class="tr_upload_list">
+                    {{#each fileuploaders as |fs|}}
+                        {{storage-object-uploader model=fs filekey=filekey uploadProgress=uploadProgress}}
+                    {{/each}}
+                </tbody>
+                {{#if objectCount}}
+                    <div class="col-md-10 pad_t28">
+                        <h3><b>Select region to upload:</b></h3> {{regions-chooser subRegionOption=subRegionOption regions=model.regions}}
+                    </div>
+                {{/if}}
+                {{#unless objectCount}}
+                    <div class="col-md-12 drop-zone" style="padding:0 !important;" {{action 'startUpload'}}>
+                        <span class="glyphicon glyphicon-cloud-upload"></span>
+                        <div><span><h2>Upload backup here</h2></span></div>
+                    </div>
+                {{/unless}}
+
+            </table>
+        </div>
+    </div>
+</div>
+{{#if objectCount}}
+    <div class="modal-footer bg_white">
+        <div class="row">
+            <div class="col-xs-12">
+                <button class='btn-vertice btn btn-success pad_r27 pull-right' {{bind-attr disabled="uploadProgress"}} {{action "done"}}>
+                Done
+            </button>
+            </div>
+        </div>
+    </div>
+{{/if}}

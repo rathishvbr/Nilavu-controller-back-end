@@ -1,0 +1,46 @@
+<div class="ssh-well">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{disk_title}}</h1>
+            <p>{{disk_description}}</p>
+            <button class="btn-vertice btn btn-success" {{action "addDisks"}}>
+                {{i18n 'vm_management.disks.add_disks'}}
+                <span class="pull-right">
+                    {{conditional-loading-spinner condition=showAddDiskSpinner size="large"}}
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="ssh-well-without-background">
+    <h1>{{current_disk}}</h1>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            {{#conditional-loading-spinner condition=showSpinner size="large" }}
+                <table class="table tb_list">
+                    <thead>
+                            <th>{{content_id}}</th>
+                            <th class="set_title">{{content_name}}</th>
+                            <th>{{content_created_at}}</th>
+                            <th>{{content_status}}</th>
+                            <th>{{disk_action}}</th>
+
+                    </thead>
+                    <tbody>
+                        {{#if diskListEmpty}}
+                            <tr>
+                                <td>
+                                    <h5>{{emptyDisks}}</h5>
+                                </td>
+                            </tr>
+                        {{else}}
+                            {{#each sortedDisks as |h|}}
+                                {{disk-list h=h}}
+                            {{/each}}
+                        {{/if}}
+                    </tbody>
+                </table>
+            {{/conditional-loading-spinner}}
+        </div>
+    </div>
+</div>

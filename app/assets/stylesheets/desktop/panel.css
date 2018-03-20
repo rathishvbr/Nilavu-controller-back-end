@@ -1,0 +1,80 @@
+.well-list {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.panel-page-title {
+    margin-top: 16px;
+    line-height: 1.3;
+    font-size: 1.25em;
+    font-weight: 600;
+}
+
+.panel {
+    margin-bottom: 16px;
+    box-shadow: none;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+
+.panel-default {
+    border-color: #e5e5e5;
+}
+
+.panel-info {
+    border-color: #2d9fd8;
+}
+
+.panel .panel-heading {
+    padding: 6px 16px;
+    line-height: 36px;
+}
+
+.panel-default > .panel-heading {
+    color: #5c5c5c;
+    background-color: #fafafa;
+    border-color: #e5e5e5;
+}
+
+.panel-info > .panel-heading {
+    color: #fff;
+    background-color: #2d9fd8;
+    border-color: #2d9fd8;
+}
+
+.panel .panel-body {
+    padding: 16px;
+}
+
+.panel-danger {
+    border-color: #d22852;
+}
+
+.panel-danger> .panel-heading {
+    color: #fff;
+    background-color: #d22852;
+    border-color: #d22852;
+}
+
+.btn-remove {
+    background-color: #e52c5a;
+    border-color: #d22852;
+    color: #fff;
+}
+
+.btn-new {
+    background-color: #38ae67;
+    border-color: #2faa60;
+    color: #fff;
+}
+.well-list > li {
+    padding: 10px 15px;
+    min-height: 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.light {
+    color: #5c5c5c;
+}

@@ -1,0 +1,113 @@
+.vm-modal-body {
+    position: relative;
+    height: 100%;
+}
+.vm .c_pading-b25 {
+    padding: 25px;
+}
+.vm .tabs {
+    float: none;
+    list-style: none;
+    border-bottom: 1px solid #ccc;
+    padding: 0;
+}
+.vm .tabs:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.vm .tabs a {
+    display: block;
+    float: left;
+    color: #6e7181;
+    padding: 10px 25px 10px 25px;
+    font-size: 20px;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    line-height: 2;
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
+    /* Safari 3.1 to 6.0 */
+    transition: all 0.5s;
+}
+.vm .tabs a:hover {
+    color: #3498db;
+    border-bottom: 3px solid #3498db;
+}
+.vm .tabs> li.active a {
+    color: #3498db;
+    border-bottom: 3px solid #3498db;
+}
+.info {
+    margin-left: -15px;
+}
+.info-center {
+    margin: auto;
+}
+.info .bottomborder {
+    border-bottom: 1px solid #ccc;
+}
+.info table td {
+    padding-right: 30px;
+    padding-bottom: 10px;
+}
+.info table {
+    margin-top: 15px;
+}
+.info-center {
+    padding-bottom: 50px;
+}
+.info-center table td {
+    padding-right: 30px;
+    padding-bottom: 10px;
+}
+.info-center table {
+    margin-top: 15px;
+}
+.button {
+    font-weight: bold;
+    margin-right: 0.2rem;
+    box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
+}
+.link-icons {
+    font-family: proxima_nova_light, proxima_nova_rg, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #6e7181;
+    font-style: normal;
+}
+#canvas_div {
+    padding: 25px;
+}
+.contentVisible {
+    display: inline;
+}
+.contentDisable {
+    display: none;
+}
+.info .con-pad {
+    padding-left: 10px;
+}
+.left-pad {
+    padding-left: 8px;
+}
+.vm-overview {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #E6F3FF;
+    background-color: #E6F3FF;
+}
+.vm-overview .bottomborder {
+    border-bottom: 2px solid #fff;
+}
+.overview-pad {
+    padding-left: 35px;
+}
+.greentext {
+    color: #6FDE86;
+}
+.disableVNCButton {
+    cursor: default;
+    pointer-events: none;
+    color: #fffff;
+    background-color: #c0c0c0;
+}

@@ -1,0 +1,19 @@
+<form>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          {{i18n 'bucket.destroy_message'}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success col-md-12 col-xs-12" {{action "destroy"}}>
+        {{i18n 'bucket.destroy'}}
+        <span class="pull-right">
+          {{conditional-loading-spinner condition=showSpinner size="large"}}
+        </span>
+    </button>
+  </div>
+</form>

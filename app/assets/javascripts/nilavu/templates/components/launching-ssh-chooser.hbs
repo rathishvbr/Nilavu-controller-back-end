@@ -1,0 +1,47 @@
+<div class="row">
+    <h3 class="head_paint">{{i18n 'launcher.select_security'}}</h3>
+    <div class="bottom-divider"></div>
+</div>
+<div class="row" style="margin-top: 20px;">
+    <div class="col-md-6">
+        <h6 class="fw_600">{{i18n 'launcher.select_sshkey'}}</h6>
+        <div class="form-group">
+            {{combo-box valueAttribute="value" content=sshFrequencies value=selectedSSHOption}}
+        </div>
+    </div>
+    <div class="col-md-6">
+        {{#if showOldPairs}}
+            <h6 class="fw_600">{{i18n 'launcher.select_sshkey_pair'}}</h6>
+            <div class="form-group">
+                {{#if oldPairs}}
+                    {{combo-box valueAttribute="value" content=oldPairFrequencies value=selectedKeyPairOption}}
+                {{else}}
+                    <span>{{i18n 'launcher.none_sshkey_create'}}</span>
+                {{/if}}
+            </div>
+            {{else if showNewPairs}}
+            <h6 class="fw_600">{{i18n 'launcher.select_sshkey_pair'}}</h6>
+            <div class="form-group">
+                {{text-field type="text" value=securingName placeholderKey="launcher.sshoption_create_title" class ="form-control f_height_h32" id="new-account-email" disabled=keypairValidated name="sshkey" autofocus="autofocus"}}
+            </div>
+
+        {{else}}
+            <h6 class="fw_600">{{i18n 'launcher.select_password_pair'}}</h6>
+            <div class="form-group">
+                {{text-field type="password" value=rootPassword placeholderKey="launcher.sshoption_password" class ="form-control f_height_h32" id="new-account-email" disabled=keypairValidated name="root_pwd" autofocus="autofocus"}}
+                <span>
+            <div class="hint_info">
+             <i class="glyphicon glyphicon-info-sign hint_info_space"></i>
+          {{i18n 'launcher.sshoption_password_hint_content'}}
+          <span>{{i18n 'launcher.sshoption_password_hint'}}</span>
+            </div>
+            </span>
+            {{#if failed}}
+            <h6 class="fd_bad">{{passwordInstructions}}</h6>
+            {{else}}
+            <h6 class="fd_good">{{passwordCorrect}}</h6>
+            {{/if}}
+     </div>
+    {{/if}}
+   </div>
+</div>

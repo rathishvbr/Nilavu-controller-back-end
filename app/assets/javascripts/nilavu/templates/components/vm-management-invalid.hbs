@@ -1,0 +1,20 @@
+<br>
+<br>
+<div class="invalidvm-well alert alert-error">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="invalidvm-text pull-right">
+                <h4>{{error_title}}</h4>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-danger pull-right" {{action "destroy"}}>
+      <span class="glyphicon glyphicon-trash"></span>
+      <span class="pull-right">
+  {{conditional-loading-spinner condition=spinnerDeleteIn size="large"}}
+  </span>
+  </button>
+        </div>
+    </div>
+</div>

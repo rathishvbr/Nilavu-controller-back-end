@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-6 info-center">
+        <table>
+            <tr>
+                <td>
+                    <h5><b>{{content_ram_size}}</b></h5></td>
+                <td>{{ram}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="ssh-well-without-background">
+<div class="row">
+    {{#if disableMonitor}}
+        <div class="col-md-12 info center disable-banner">
+            <span>{{i18n "vm_management.network.monitoring_ram"}} {{osName}}.</span>
+        </div>
+    {{else}}
+        <div class="col-md-12 info">
+            {{chart-ram model=model selectedTab=selectedTab}}
+        </div>
+
+    {{/if}}
+   </div>
+</div>

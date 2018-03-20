@@ -1,0 +1,10 @@
+<div class="col-sm-8 pad_l39">
+    {{#if PaidorNot}}
+        <h4>{{i18n 'launcher.launching_cost'}}</h4>
+        <h3><span>{{format-currency unitPerMonth  currency=currency}}</span>/month<span class="badge b-color-{{costStatus}}">{{costStatus}}</span></h3>
+    {{else}}
+        <h4>{{i18n 'launcher.launching_cost'}}</h4>
+        <h3><span>{{format-currency unitPerMonth  currency=currency}}</span>/mo
+      <b><span class="smaller">({{format-currency unitPerHour currency=currency}}/hr)</span></b></h3>
+    {{/if}}
+</div>

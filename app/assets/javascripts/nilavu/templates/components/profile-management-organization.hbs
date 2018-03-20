@@ -1,0 +1,29 @@
+<div class="prof bottom_border_grey">
+    <div class="row">
+        <div class="col-xs-5 col-sm-6">
+            <h4><b>{{i18n 'profile_management.organization.information'}}</b></h4>
+        </div>
+        <div class="pull-right col-xs-3">
+            <div class="dropdown">
+                <div class="form-group">
+
+                    {{combo-box content=domainData valueAttribute="value" value=selectDomain}}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 margintb_15">
+        <ul class="tabs">
+            {{organization-tab orgPanels=orgPanels orgSelectedTab=orgSelectedTab orgTab="user"}} {{organization-tab orgPanels=orgPanels orgSelectedTab=orgSelectedTab orgTab="domain"}}
+        </ul>
+        <div class="org-datas">
+            {{#each orgPanels as |orgTab|}}
+                {{component orgTab orgSelectedTab=orgSelectedTab model=model organizationType=organizationType}}
+            {{/each}}
+        </div>
+
+    </div>
+</div>

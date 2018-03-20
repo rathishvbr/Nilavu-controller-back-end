@@ -1,0 +1,8 @@
+<td>{{content_title}}</td>
+<td class="set_title">{{ipAddress}}</td>
+<td><button type="button" class="btn-vertice btn-small btn-danger" {{bind-attr disabled="submitDisabled"}} {{action "removeNetwork"}} style="padding: 1px 8px 24px 8px !important;" title= {{btnTitle}}>Detach
+  <span class="pull-right">
+    {{conditional-loading-spinner condition=showSpinner size="large"}}
+  </span>
+</button>
+</td>

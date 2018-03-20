@@ -1,0 +1,90 @@
+<div class="ssh-well">
+    <div class="row">
+        <div class="col-md-6 verticalLine">
+            <h1>{{table_title}}</h1>
+            <p>{{table_description}}</p>
+            <button class="btn-vertice btn btn-info" {{action "showTable"}}>
+                {{i18n 'vm_management.network.show'}}
+            </button>
+        </div>
+        <div class="col-md-6">
+            <h1>{{monitoring_title}}</h1>
+            <p>{{monitoring_description}}</p>
+            <button class="btn-vertice btn btn-success" {{action "showCharts"}}>
+                {{i18n 'vm_management.network.show'}}
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-warning">
+    <span class="glyphicon glyphicon-exclamation-sign warning-s-c"></span> {{i18n 'vm_management.network.caution_info_attach'}}
+</div>
+
+
+{{#if actionBackupIP}}
+    <div class="alert alert-info pad_b21">
+        <span class="glyphicon glyphicon-info-sign info-s-c"></span>
+        <span>{{i18n 'vm_management.network.caution_info_attach_ip'}}</span>
+        <button type="button" class="btn-vertice btn btn-info btn-small pull-right " {{action 'attacheVmIp'}} {{bind-attr disabled="submitDisabled"}}>
+         {{conditional-loading-spinner condition=showAttachNetworkSpinner size="large"}}
+  {{i18n 'vm_management.network.attach_ip'}}
+ </button>
+    </div>
+{{/if}}
+
+<div class="ssh-well-without-background">
+    <div {{bind-attr class="visibleTable"}}>
+        <span class="pull-right col-md-2">
+<button type="button" class="btn-vertice btn btn-success pull-right " {{action 'attache'}}>
+{{i18n 'vm_management.network.attach'}}</button>
+</span>
+        <h1>{{i18n 'vm_management.network.tab_title'}}</h1>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                {{#conditional-loading-spinner condition=showSpinner size="large" }}
+                    <table class="table tb_list">
+                        <thead>
+                            <th>{{i18n 'vm_management.network.name'}}</th>
+                            <th>{{i18n 'vm_management.network.type'}}</th>
+                            <th>{{i18n 'vm_management.network.action'}}</th>
+                        </thead>
+
+                        <tbody>
+
+                            {{#if networkListEmpty}}
+
+                                <tr>
+                                    <td>
+
+                                        <h5>{{i18n 'vm_management.network.empty_network'}}</h5>
+                                    </td>
+                                </tr>
+                            {{else}}
+                                {{#each sortNetworks as |n|}}
+                                    {{network-list model=model network=n sortNetworks=sortNetworks}}
+                                {{/each}}
+                            {{/if}}
+                        </tbody>
+                    </table>
+                {{/conditional-loading-spinner}}
+            </div>
+        </div>
+    </div>
+
+    {{#if disableMonitor}}
+        <div {{bind-attr class="visibleCharts"}}>
+            <div class="ssh-well-without-background" style="padding-bottom: 39px;">
+                <div class="col-md-12 info center disable-banner">
+                    <span> {{i18n "vm_management.network.monitoring_network"}} {{osName}}.</span>
+                </div>
+            </div>
+        </div>
+    {{else}}
+        <div {{bind-attr class="visibleCharts"}}>
+            {{chart-network model=model selectedTab=selectedTab visible=networkChartVisible}}
+        </div>
+
+    {{/if}}
+
+</div>

@@ -1,0 +1,21 @@
+<div class="col-md-4 help_center_left">
+    <div class="balance">
+        <h2>{{i18n 'billing.currentestimation'}}</h2>
+        <span class="green">
+          {{format-currency fixedBalance  currency=currency}}
+        </span>
+        <h2>{{i18n 'billing.currentcredit'}}</h2>
+        <span class="green">
+          {{format-currency currentCredit  currency=currency}}
+        </span>
+        <h2>{{i18n 'billing.currentquota'}}</h2>
+        <span class="green">
+          {{currentProduct}}
+        </span>
+        <h2>{{i18n 'billing.remainingquota'}}</h2>
+        <span class="blue">
+          {{allocatedProduct}}
+        </span>
+        <br>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="rt-box col-xs-12 c_height_5">
+    {{topic-list-header currentUser=currentUser title=title nameEnabled=nameEnabled name=name}}
+    <div class="bottom-divider"></div>
+    <div class="row c_pading-b25 pad_0">
+        <div class="notifications">
+            {{#unless loading}}
+                {{#each n in notifierEvents}}
+                    <div class="col-md-2">
+                        <h5>{{format-age n.createdAt}}</h5>
+                    </div>
+                    <div class="col-md-9">
+                        <h4>{{n.eventType}} - {{n.description}}
+                        </h4>
+                    </div>
+                    <div class="col-md-1">
+                        <i class='circle-{{n.eventType}} pull-right'></i>
+                    </div>
+                {{/each}}
+            {{/unless}}
+        </div>
+        {{conditional-loading-spinner size="large" condition=loading}}
+
+    </div>
+</div>

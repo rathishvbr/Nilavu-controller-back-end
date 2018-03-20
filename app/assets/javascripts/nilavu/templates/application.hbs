@@ -1,0 +1,25 @@
+{{#if showTop}}
+  {{site-header canSignUp=canSignUp
+          showKeyboard="showKeyboardShortcutsHelp"
+          toggleMobileView="toggleMobileView"
+          showLogin="showLogin"
+          toggleAnonymous="toggleAnonymous"
+          canShowHeader=canShowHeader
+          logout="logout"}}
+{{/if}}
+
+<div id="main-outlet">
+    <div class="container">
+        {{global-notice}}
+    </div>
+    {{outlet}}
+    {{outlet "loading"}}
+</div>
+
+{{notification-container notifications=notificationMessages position="bottom-right"}}
+
+{{#if showFooter}}
+     {{custom-html "footer"}}
+{{/if}}
+
+{{render "modal"}}

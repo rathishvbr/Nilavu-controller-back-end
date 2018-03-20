@@ -1,0 +1,133 @@
+<div class="ssh-well">
+    <div class="row">
+        <div class="col-md-12">
+              <div class="row ">
+                    <div class="col-md-3">
+                        <h3><b>{{i18n 'admin.newuser.new_user_info'}}</b></h3>
+                        </div>
+                    </div><br>
+              <div class="row">
+                  <div class="col-md-6">
+                    <div class="col-md-4 profile_left_pad_15 profile_align">
+                     <div class="col-xs-12">
+                        <label for="ex1" class=" lable-color">{{i18n 'admin.newuser.new_user_fname'}}</label>
+                      </div>
+                     </div>
+                       <div class="col-md-8 pad_b15">
+                         {{text-field value=fname class="form-control" id="ex1" placeholder=" first name"}}
+                       </div>
+                   </div>
+                      <div class="col-md-6">
+                         <div class="col-md-4">
+                            <div class="col-xs-12">
+                               <label for="ex2" class=" lable-color">{{i18n 'admin.newuser.new_user_lname'}}</label>
+                            </div>
+                          </div>
+                          <div class="col-md-8 pad_b15">
+                                {{text-field value=lname class="form-control" id="ex2" placeholder="last name"}}
+                           </div>
+                       </div>
+              </div>
+                  <br>
+              <div class="row">
+                  <div class="col-md-6">
+                    <div class="col-md-4 profile_left_pad_15 profile_align">
+                      <div class="col-xs-12">
+                         <label for="ex3" class=" lable-color">{{i18n 'admin.newuser.new_user_contact'}}</label>
+                      </div>
+                    </div>
+                    <div class="col-md-8 pad_b15">
+                         {{intl-tel-input class="form-control"  value=mobile selectedCountryData=selectedCountryData number=number id="ex3"}}
+                      {{input-tip validation=phonenumberValidation}}
+                     </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="col-md-4">
+                     <div class="col-xs-12">
+                       <label for="ex4" class=" lable-color">{{i18n 'admin.newuser.new_user_email'}}</label>
+                      </div>
+                  </div>
+                  <div class="col-md-8 pad_b15">
+                    {{text-field value=email class="form-control" id="ex4" disabled=emailValidated placeholder="email"}}
+                    {{i18n 'user.email.instructions'}}
+                    {{input-tip validation=emailValidation}}
+                   </div>
+                </div>
+            </div>
+            <div class="row">
+                  <div class="col-md-6">
+                     <div class="col-md-4 profile_left_pad_15 profile_align">
+                         <div class="col-xs-12">
+                           <label for="ex5" class=" lable-color">
+                               {{i18n 'admin.newuser.new_user_password'}}</label>
+                         </div>
+                    </div>
+                    <div class="col-md-8 pad_b15">
+                        {{#if passwordRequired}}
+                          {{password-field value=accountPassword type="password" placeholderKey="user.password.title" class="form-control" id="ex5" capsLockOn=capsLockOn}}
+                      {{/if}}
+                      <br>
+                       {{passwordInstructions}} {{input-tip validation=passwordValidation}}
+                    </div>
+                </div>
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                     <div class="col-xs-12">
+                         <label for="ex6" class="lable-color">
+                          {{i18n 'admin.newuser.new_user_re_entry_pass'}}</label>
+                     </div>
+                     </div>
+                      <div class="col-md-8 pad_b15">
+                      {{password-field value=re_entery_pass type="password" placeholderKey="user.password.confirm_title" class="form-control" id="ex6" capsLockOn=capsLockOn}} {{input-tip validation=passwordConfirmValidation}}
+                     </div>
+                </div>
+          </div>
+          <div class="row">
+                <div class="col-md-3">
+                        <h3><b>{{i18n 'admin.newuser.states_details'}}</b></h3>
+                </div>
+           </div>
+           <br>
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="col-md-4 profile_left_pad_15 profile_align">
+                     <div class="col-xs-2">
+                          <label for="ex7" class="lable-color">{{i18n 'admin.newuser.authority'}}
+                          </label>
+                     </div>
+                  </div>
+                  <div class="col-md-8"  >
+                        {{combo-box valueAttribute="value" content=authorityContent value=selectedAuthority}}
+                  </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="col-xs-6">
+                      <label for="ex8" class="lable-color">
+                        {{i18n 'admin.newuser.active'}}
+                      </label>
+                       {{input id="ex8" type="checkbox" checked=active   disabled=hideAuthority}}
+                </div>
+                <div class="col-md-6">
+                      <label for="ex9" class="lable-color">
+                      {{i18n 'admin.newuser.approved'}}
+                      </label>
+                      {{input id="ex9" type="checkbox" checked=approved    disabled=hideAuthority}}
+                </div>
+            </div>
+
+       </div>
+   </div>
+   <div class="row">
+     <br>
+        <div class="col-md-8 pull-right">
+              <br><br>
+                <button  class="btn-vertice btn btn-success col-md-3 " style="height:48px !important;" {{bind-attr disabled="submitDisabled"}} {{action "create"}}>{{i18n 'admin.newuser.create'}}
+                    <span class="pull-right">
+                       {{conditional-loading-spinner condition=showSpinner size="large"}}
+                       </span>
+                  </button>
+        </div>
+     </div>
+   </div>
+ </div>

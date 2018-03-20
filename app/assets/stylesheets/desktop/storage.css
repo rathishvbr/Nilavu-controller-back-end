@@ -1,0 +1,271 @@
+.custom-modal {
+    .modal-dialog {
+        width: 30%;
+    }
+}
+
+.btn.blue {
+    color: white;
+    text-shadow: none;
+    background-color: #4d90fe;
+}
+
+.btn.blue:hover, .btn.blue:focus, .btn.blue:active, .btn.blue.active, .btn.blue[disabled], .btn.blue.disabled {
+    background-color: #0362fd !important;
+    color: #fff !important;
+    outline: none !important;
+}
+
+
+/*  Green */
+
+.btn.green {
+    color: white;
+    text-shadow: none;
+    background-color: #35aa47;
+}
+
+.btn.green:hover, .btn.green:focus, .btn.green:active, .btn.green.active, .btn.green.disabled, .btn.green[disabled] {
+    background-color: #6fde86 !important;
+    color: #fff !important;
+    outline: none !important;
+}
+
+.c_icon-text {
+    color: transparent;
+    overflow: hidden;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    background-image: url(../images/icons/file_extn_text.png);
+}
+
+.c_icon-zip {
+    color: transparent;
+    overflow: hidden;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    background-image: url(../images/icons/file_extn_zip.png);
+}
+
+.c_icon-jpg {
+    color: transparent;
+    overflow: hidden;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    background-image: url(../images/icons/file_extn_jpg.png);
+}
+
+.c_icon-png {
+    color: transparent;
+    overflow: hidden;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    background-image: url(../images/icons/file_extn_png.png);
+}
+
+.c_icon-svg {
+    color: transparent;
+    overflow: hidden;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    background-image: url(../images/icons/file_extn_svg.png);
+}
+
+.close_red {
+    background-image: url(../images/icons/upload_selected_remove_red.png) !important;
+    background-repeat: no-repeat !important;
+    display: inline-block;
+    height: 21px;
+    margin-right: 0;
+    margin-top: 8px;
+    width: 22px;
+}
+
+.success_icon {
+    background-image: url(../images/icons/upload_selected_success.png) !important;
+    background-repeat: no-repeat !important;
+    display: inline-block;
+    height: 21px;
+    margin-right: 0;
+    margin-top: 8px;
+    width: 22px;
+}
+
+.cloud_download {
+    color: transparent;
+    overflow: hidden;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* border-radius: 50%; */
+    vertical-align: middle;
+    background-image: url(../images/icons/icon-in.png);
+}
+
+.properties-icon-selected {
+    color: transparent;
+    overflow: hidden;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* border-radius: 50%; */
+    vertical-align: middle;
+    background-image: url(../images/icons/properties-icon-selected.png);
+}
+
+.properties-icon-unselected {
+    color: transparent;
+    overflow: hidden;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* border-radius: 50%; */
+    vertical-align: middle;
+    background-image: url(../images/icons/properties-icon-unselected.png);
+}
+
+
+.storage-lock {
+    color: transparent;
+    overflow: hidden;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* border-radius: 50%; */
+    vertical-align: middle;
+    background-image: url(../images/icons/storage-lock.png);
+}
+
+.storage-unlock {
+    color: transparent;
+    overflow: hidden;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* border-radius: 50%; */
+    vertical-align: middle;
+    background-image: url(../images/icons/storage-unlock.png);
+}
+
+.pullright {
+    text-align: right;
+    margin-right: 1em;
+}
+
+.yfiles-tb tr {
+    border-bottom: 1px solid #F5F1F1;
+}
+
+.yfiles-tb tr>td {
+    border-top: none !important;
+}
+
+.yfiles-tb .checker {
+    margin: 10px -10px;
+}
+
+.storage-bucket-back a:link {
+    text-decoration: none;
+}
+
+.storage-bucket-back a:visited {
+    text-decoration: none;
+}
+
+.storage-bucket-back a:hover {
+    text-decoration: underline;
+}
+
+.storage-bucket-back a:active {
+    text-decoration: underline;
+}
+
+.w3-red, .w3-hover-red:hover {
+    color: #fff!important;
+    background-color: #f44336!important;
+}
+
+.w3-green, .w3-hover-green:hover {
+    color: #fff!important;
+    background-color: #4CAF50!important;
+}
+
+.c_pading-top-b20 {
+    padding-top: 20px;
+}
+
+.w3-badge {
+    border-radius: 50%;
+}
+
+.w3-badge, .w3-tag, .w3-sign {
+    background-color: #000;
+    color: #fff;
+    display: inline-block;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: center;
+}
+
+table.empty {
+    border-collapse: separate;
+    empty-cells: hide;
+}
+
+td.empty {
+    padding: 5px;
+}
+
+.text-green {
+  color: green;
+}
+
+#myProgress {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background-color: #ddd;
+}
+
+#myBar {
+  position: absolute;
+  width: 10%;
+  height: 100%;
+  background-color: #4CAF50;
+}
+
+#myProgress #label {
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}

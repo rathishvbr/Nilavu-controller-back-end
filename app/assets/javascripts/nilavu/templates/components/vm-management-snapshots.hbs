@@ -1,0 +1,55 @@
+<div class="ssh-well">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{snapshot_title}}</h1>
+            <p>{{snapshot_description}}</p>
+            <button class="btn-vertice btn btn-success" {{action "takeSnapshot"}}>
+                {{i18n 'vm_management.snapshots.take_snapshot'}}
+                <span class="pull-right">
+                    {{conditional-loading-spinner condition=showTakeSnapshotSpinner size="large"}}
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="ssh-well-without-background">
+    {{#unless snapshotListEmpty}}
+        <span class="pull-right col-md-2">
+  <button type="button" class="btn-vertice btn btn-dark pull-right " {{action 'getSnapshotsRefresh'}}>
+   <div class="large">
+    <span class="glyphicon glyphicon-refresh"></span>
+</div>
+</button>
+</span>
+{{/unless}}
+<h1>{{snapshot_list_title}}</h1>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        {{#conditional-loading-spinner condition=showSpinner size="large" }}
+            <table class="table tb_list">
+                <thead>
+                    <th>{{content_id}}</th>
+                    <th class="set_title">{{content_name}}</th>
+                    <th>{{content_created_at}}</th>
+                    <th>{{content_status}}</th>
+                    <th>{{snapshot_action}}</th>
+                </thead>
+
+                <tbody>
+                    {{#if snapshotListEmpty}}
+                        <tr>
+                            <td>
+                                <h5>{{emptySnapshots}}</h5>
+                            </td>
+                        </tr>
+                    {{else}}
+                        {{#each sortedSnapshots as |h|}}
+                            {{snapshot-list refresh="getSnapshotsRefresh" model=model h=h}}
+                        {{/each}}
+                    {{/if}}
+                </tbody>
+            </table>
+        {{/conditional-loading-spinner}}
+    </div>
+</div>
+</div>

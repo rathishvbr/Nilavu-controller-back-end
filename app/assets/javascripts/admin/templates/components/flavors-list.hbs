@@ -1,0 +1,31 @@
+<div class="col-xs-12 col-sm-6 col-md-3 app_cover my_bucket_inner" style="padding-bottom: 12px;">
+    <div class="pad_i_0 flavor-col-sm-4" style="background-color: #fff;">
+        <div class="rInner middle">
+            <div class="height_141 rBox shorter">
+                <div class="rHead">
+                    <div class="rTitle">
+                        {{#link-to 'adminFlavors.show' flavors.id }}
+                            <span><b>{{flavors.name}}</b></span>
+                        {{/link-to}}
+
+                    </div>
+                    <div class="rContent">
+                        <p>
+                            <span><b>{{flavors.ram}} {{i18n 'number.human.storage_units.units.gb'}}</b></span> {{i18n 'launcher.launching_memory'}}
+                            <br>
+                            <span><b>{{flavors.cpu}} {{i18n 'launcher.launching_Core'}}</b></span> {{i18n 'launcher.launching_cpu'}}
+                            <br>
+                            <span><b>{{flavors.disk}} {{i18n 'number.human.storage_units.units.gb'}}</b></span> {{i18n 'launcher.launching_storage'}}
+                            <br>
+
+                        </p>
+                    </div>
+                </div>
+
+                <div class="rFooter">
+                    {{launching-flavor-chooser name=flavorName flavourable=flavourable}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

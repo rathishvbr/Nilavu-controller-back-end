@@ -1,0 +1,58 @@
+<div class="rt-box col-xs-12 c_height_5">
+    <div class="container">
+         <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 pad_0">
+                <h4 class="title_padding">
+            {{title}}   <small><b>{{name}}</b></small>
+            <small><b>{{subTitle}}</b></small>
+          </h4>
+            </div>
+            <div class="col-md-6 predeploy_actions">
+             <div class="col-md-2 offset-col-2 pull-right">
+              <button type="button" class="btn-vertice btn btn-danger" {{action "destroy"}}>
+               <span class="glyphicon glyphicon-trash" style="top: 3px;"></span>
+               <span class="pull-right">
+                {{conditional-loading-spinner condition=spinnerDeleteIn size="large"}}
+               </span>
+              </button>
+             </div>
+                <div class="col-md-4 pull-right pad_l10">
+                    <button type="button" class="btn-vertice btn btn-info " {{action "reCreate"}} {{bind-attr disabled="launchParked"}}>
+                <span class="glyphicon glyphicon-play"></span> {{i18n 'launcher.redeploy'}}
+                <span class="pull-right">
+                {{conditional-loading-spinner condition=spinnerCreateIn size="large"}}
+              </span>
+            </button>
+                </div>
+                <div class="col-md-4 pull-right">
+                 {{vnc-console-button model=model activateVNC=activateVNC title=title type=modelType}}
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="bottom-divider title_padding"></div>
+        <p> </p>
+        {{#if showTimeInPredeploy}}
+        <div class="row" style="padding: 0px 0px 18px 17px;">
+            <div class="col-md-4 pad_0">
+                Submitted at {{format-age createdAt}} ago
+            </div>
+            <div class="col-md-4 pad_0">
+                Time now {{clock.hour}} hours {{clock.minute}} minute {{clock.second}} seconds
+            </div>
+            <div class="col-md-4" style="padding-bottom: 15px;">
+            </div>
+        </div>
+        {{else}}
+        <div class="row" style="padding: 0px 0px 18px 17px;">
+            {{i18n 'launcher.predeploy_time_show'}}
+          </div>
+        {{/if}}
+        <div class="predeploybar">
+            {{#progress-bar deployError=deployError deployPreError=deployPreError value=streamPercentage barHead=barHead striped=true animate=true minValue=0 maxValue=100 label=barLabel showLabel=true type="danger" }}{{/progress-bar}}
+        </div>
+        {{conditional-loading-spinner size="large" condition=model.postStream.loading}}
+        {{scrolling-post-stream posts=postsToRender}}
+    </div>
+</div>

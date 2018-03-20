@@ -1,0 +1,105 @@
+<div class="signin login">
+    <!-- BEGIN LOGO -->
+    <div class="container">
+        <div class="row">
+            {{login-logo minimized=showExtraInfo}}
+        </div>
+        <!-- END LOGO -->
+        <div class="col-md-10 col-sm-10 offset-md-1   bg_white border_grey sign-up">
+            <!--start login-->
+            <div class="col-md-6 col-sm-6">
+                <img src= {{ctaEye}} class="img-responsive" /> {{ctaEyeTitle}}
+            </div>
+
+            <div class="col-md-6 col-sm-6">
+                <h2>{{i18n 'user.signup.title'}}<span class="sign_up_small"><i>{{i18n 'user.signup.description'}}</i></span></h2>
+
+
+                <div class="form-group">
+                    <div class="c-inline">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                {{text-field type="firstname" value=firstname placeholderKey="user.email.firstname" class ="form-control" id="new-account-firstname" name="firstname"}}
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 input-icon right">
+                                {{text-field type="lastname" value=lastname placeholderKey="user.email.lastname" class ="form-control" id="new-account-lastname" name="lastname"}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-112">
+                            {{intl-tel-input class="form-control"  value=phonenumber selectedCountryData=selectedCountryData number=number id="new-account-phonenumber" name="phonenumber"}}
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            {{input-tip validation=phonenumberValidation}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            {{text-field type="email" value=accountEmail placeholderKey="user.email.title" class ="form-control" id="new-account-email" disabled=emailValidated name="email" autofocus="autofocus"}}
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            {{i18n 'user.email.instructions'}}
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            {{input-tip validation=emailValidation}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg6 col-xl-6">
+                            {{#if passwordRequired}}
+                                {{password-field value=accountPassword type="password" placeholderKey="user.password.title" class="form-control" id="new-account-password" capsLockOn=capsLockOn}}
+                            {{/if}}
+                            {{passwordInstructions}} {{input-tip validation=passwordValidation}}
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            {{password-field value=accountPasswordConfirm type="password" placeholderKey="user.password.confirm_title" class="form-control" id="new-account-confirmpassword" capsLockOn=capsLockOn}} {{input-tip validation=passwordConfirmValidation}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        {{#if showCreateForm}}
+                            <button class='btn btn-success col-lg-12' id="login-link" {{bind-attr disabled="submitDisabled"}} {{action "createAccount"}}>
+                                <span class="pull-right">
+                                  {{conditional-loading-spinner condition=formSubmitted size="large"}}
+                                </span>
+                                {{i18n 'create_account.title'}}
+                            </button>
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="bottom">
+                    <p class="colr-bluegrey">{{ i18n 'user.have_an_account' }} &nbsp;&nbsp;
+                        <a href="login" {{action "showLogin"}}>
+                            <span class="colr-denimblue">{{i18n 'user.login_here'}}</span>
+                        </a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7 col-xl-7 offset-sm-2 offset-md-2 offset-lg-2 offset-xl-3 outer footer-bottom">
+          <div class="row">
+            <!-- only for simha color:white-->
+              <p class="text-center copy-right">
+                    <!-- {{i18n 'login.copyright'}} -->
+                  <a href="{{contactUrl}}" target="_blank">{{orgName}}</a>
+                    {{orgDescription}}
+                  <span class="pull-right"></span>
+              </p>
+          </div>
+        </div>
+        <!--End login-->
+    </div>
+</div>

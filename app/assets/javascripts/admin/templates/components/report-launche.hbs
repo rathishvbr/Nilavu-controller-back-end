@@ -1,0 +1,14 @@
+<td>
+    {{row.name}}</td>
+<td>{{row.account_id}}</td>
+<td>{{row.type}}</td>
+<td>{{row.status}}</td>
+<td>{{row.number_of_hours}}</td>
+<td>{{row.created_at}}</td>
+<td><a href="/t/{{row.asms_id}}/{{row.id}}" target="_blank">{{i18n 'admin.dashboard.launches.management'}}</a></td>
+<td>
+    {{#conditional-loading-spinner condition=deletingMachine size="large" }}
+        {{d-button action="delete" title="admin.dashboard.launches.delete_title" class="btn-danger btn_space_del" icon="trash"}}
+    {{/conditional-loading-spinner}}
+</td>
+<div id="snackbar" class= {{NotDeleted}}><span class="glyphicon glyphicon-warning-sign" style="right:5px;"></span>{{i18n 'admin.dashboard.launches.not_deleted'}}</div>

@@ -1,0 +1,82 @@
+<div class="rt-box col-xs-12 c_height_5">
+    {{topic-list-header currentUser=currentUser title=title nameEnabled=nameEnabled name=name subTitleEnabled=subTitleEnabled subTitle=subTitle}}
+    <div class="bottom-divider"></div>
+
+    <div class="row c_pading-b25" style="padding-top: 21px;">
+        {{#if validState}}
+            <span class="pull-left col-md-2">
+            <button type="button" class="btn-vertice btn btn-dark pull-left " {{action "refresh"}}>
+                {{#conditional-loading-spinner condition=showRefreshSpinner size="large" }}
+                    <span class="glyphicon glyphicon-refresh" style="top: 3px;"></span>
+            {{/conditional-loading-spinner}}
+            </button>
+            </span>
+            <span class="pull-left col-md-8 text-center">
+                {{#link-to "vnc" (query-params name=title id=model.id asms_id=model.asms_id type=modelType) target="_blank" }}
+                <button type="button" class="btn-vertice btn btn-info" {{bind-attr disabled="vncDisabled"}}>
+                <span class="glyphicon glyphicon-random"></span> Console
+            </button>
+            {{/link-to}}
+
+            <span class="dropdown">
+                  <button class="btn-vertice btn btn-dark dropdown-toggle" type="button" {{bind-attr disabled="restartDisabled"}} data-toggle="dropdown">
+                   <span class="glyphicon glyphicon-repeat"></span> Reboot
+            <span class="pull-right">
+                   {{conditional-loading-spinner condition=showRebootSpinner size="large"}}
+               </span>
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu dropdownalter">
+                <li {{action "restart"}}><a href="#">Reboot</a></li>
+                <li {{action "hardRestart"}}><a href="#">Hard reboot</a></li>
+            </ul>
+            </span>
+
+            <span class="dropdown">
+                  <button class="btn-vertice btn btn-dark dropdown-toggle" {{bind-attr disabled="stopDisabled"}} type="button" data-toggle="dropdown">
+                   <span class="glyphicon glyphicon-pause"></span> Shutdown
+            <span class="pull-right">
+                   {{conditional-loading-spinner condition=showStopSpinner size="large"}}
+               </span>
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu dropdownalter">
+                <li {{action "stop"}}><a href="#">Shutdown</a></li>
+                <li {{action "hardStop"}}><a href="#">Hard shutdown</a></li>
+            </ul>
+            </span>
+
+            <button type="button" class="btn-vertice btn btn-info" {{action "start"}} {{bind-attr disabled="startDisabled"}}>
+                    <span class="glyphicon glyphicon-play"></span> Start
+                    <span class="pull-right">
+                    {{conditional-loading-spinner condition=showStartSpinner size="large"}}
+                </span>
+                </button>
+            </span>
+            <span class="pull-right col-md-2">
+
+            <button type="button" class="btn-vertice btn btn-danger pull-right" {{action "destroy"}}>
+                <span class="glyphicon glyphicon-trash" style="top: 3px;"></span>
+            <span class="pull-right">
+                    {{conditional-loading-spinner condition=showDeleteSpinner size="large"}}
+                </span>
+            </button>
+            </span>
+        {{/if}}
+    </div>
+    <section class="vm">
+        {{#if validState}}
+            <ul class="tabs">
+                {{vm-management-tab panels=panels selectedTab=selectedTab tab="info"}} {{vm-management-tab panels=panels selectedTab=selectedTab tab="backups"}} {{vm-management-tab panels=panels selectedTab=selectedTab tab="disks"}} {{vm-management-tab panels=panels
+                selectedTab=selectedTab tab="network"}} {{vm-management-tab panels=panels selectedTab=selectedTab tab="cpu"}} {{vm-management-tab panels=panels selectedTab=selectedTab tab="ram"}} {{vm-management-tab panels=panels selectedTab=selectedTab
+                tab="keys"}} {{vm-management-tab panels=panels selectedTab=selectedTab tab="snapshots"}} {{vm-management-tab panels=panels selectedTab=selectedTab tab="logs"}}
+
+            </ul>
+            <div class="vm-modal-body">
+                {{#each panels as |tab|}}
+                    {{component tab selectedTab=selectedTab model=model}}
+                {{/each}}
+            </div>
+        {{else}}
+            {{vm-management-invalid model=model}}
+        {{/if}}
+    </section>
+</div>

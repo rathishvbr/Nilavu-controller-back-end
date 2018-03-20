@@ -1,0 +1,50 @@
+.tb_list tbody tr {
+    height: 60px;
+    color: #989aab;
+}
+.tb_list thead th {
+    height: 40px;
+    color: #989aab;
+}
+.label-profile {
+    font-size: 18px;
+}
+.lable-color {
+    color: #989aab;
+}
+.profile-modal-body {
+    position: relative;
+    height: 800px;
+}
+.profile_left_pad_15 {
+    padding-left: 30px;
+}
+.profile_right_pad_15 {
+    padding-right: 30px;
+}
+.profile_bottom_pad_15 {
+    padding-bottom: 10px;
+}
+.profile_align {
+    vertical-align: middle;
+}
+
+.profile_icon i {
+  top: 2px;
+}
+
+.admin_wrench_icon i {
+  top: 2px;
+}
+
+.logout_icon i {
+  top: 4px;
+}
+
+.logout_icon {
+  padding-left: 17px !important;
+}
+
+.input-group-button {
+  width: 96.5% !important ;
+}

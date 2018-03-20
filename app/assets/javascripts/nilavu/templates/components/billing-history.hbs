@@ -1,0 +1,72 @@
+<div class="row pull-right">
+    <div class='view-options' style="padding-right: 15px;">
+        {{#if viewingTable}}
+            {{i18n 'billing.reports.view_table'}}
+        {{else}}
+            <a href {{action "viewAsTable"}}>{{i18n 'billing.reports.view_table'}}</a>
+        {{/if}}
+        |
+        {{#if viewingGraph}}
+            {{i18n 'billing.reports.view_graph'}}
+        {{else}}
+            <a href {{action "viewAsGraph"}}>{{i18n 'billing.reports.view_graph'}}</a>
+        {{/if}}
+    </div>
+</div>
+
+{{#conditional-loading-spinner condition=refreshing size="large" }}
+    {{#if viewingGraph}}
+        {{graph-chart model=model}}
+    {{else}}
+        <div class="table-left-h">
+            <table class='table report' style="border: 1px solid #decdde;">
+                <tr>
+                    <th>{{i18n 'billing.launches.name'}}
+                        {{#if sortByAsc}}
+                            <a href="#" {{action "sortBy"}}>
+                                <span class="glyphicon glyphicon-sort-by-attributes sorting-icon"></span>
+                            </a>
+                        {{else}}
+                            <a href="#" {{action "sortBy"}}>
+                                <span class="glyphicon glyphicon-sort-by-attributes-alt sorting-icon"></span>
+                            </a>
+
+                        {{/if}}
+                    </th>
+                    <th>{{i18n 'billing.launches.status'}}
+                        <a href="#" {{action "sortByStatus"}}>
+                            <span class="glyphicon glyphicon-sort sorting-icon"></span>
+                        </a>
+                    </th>
+                    <th>{{i18n 'billing.launches.number_of_hours'}}</th>
+                    <th>{{model.reports.xaxis}}</th>
+                    <th>{{i18n 'billing.launches.number_of_cost'}}</th>
+                </tr>
+
+                {{#if historyEmpty}}
+                    <tr>
+                        <td><div class = "card-details">
+                            <h2>{{emptyHistory}}</h2>
+                          </div></td>
+                        <td></td>
+                        <td> </td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                {{else}}
+
+                    {{#each sortededReportSales as |row|}}
+                        <tr>
+                            <td>{{row.name}}</td>
+                            <td>{{row.status}}</td>
+                            <td>{{row.number_of_hours}}</td>
+                            <td>{{row.x}}</td>
+                            <td>{{row.y}}</td>
+                        </tr>
+                    {{/each}}
+                {{/if}}
+            </table>
+        </div>
+    {{/if}}
+{{/conditional-loading-spinner}}

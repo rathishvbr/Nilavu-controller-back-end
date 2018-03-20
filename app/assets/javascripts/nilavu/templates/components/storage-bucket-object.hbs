@@ -1,0 +1,23 @@
+<td class="td-left objectListTd">
+    <i id="objectFormat" {{bind-attr class="iconClass popIcon"}}></i>
+    <b>{{name}}</b>
+</td>
+<td class="pullright">
+    <a href= {{downloadURL}} target='_blank'>
+        <i class="cloud_download margin_15 "></i>
+    </a>
+</td>
+<td class="pullright">
+    <a href {{action "currentObject"}}>
+        <i {{bind-attr class="propertyIcon defaultMargin"}} ></i>
+    </a>
+</td>
+
+<td class="pullright">
+    <a href {{action "destroy"}}>
+        <i class="c_icon-trash margin_15 pull-right"></i>
+        <span class="pull-right">
+              {{conditional-loading-spinner condition=showDestroySpinner }}
+        </span>
+    </a>
+</td>

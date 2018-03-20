@@ -1,0 +1,108 @@
+<section class="big-padding col-xs-12" id="services" style=" margin-bottom: 50px;">
+    <div class="container">
+        <div class="tab-content">
+            <div class="row tab-pane active" id="quota">
+                <div class="col-xs-12 col-md-4 col-custom-1200">
+                    <div class="custom-1200-plan" id="explore_plans">
+                        <div id="explore_bar">
+                            <div class="explore_bar_type_dev" id="explore_bar_type">
+                                <div class="explorestx_browsebar_brand_logo_stxcl" id="explorestx_browsebar_brand_logo">
+                                    <h2>Plans</h2>
+                                </div>
+                            </div>
+                            <div style="clear:both;"></div>
+                            <div id="explorestx_specs">
+                                <ul>
+                                    <li>Workload
+                                        <div class="explorestx_specs_blank">
+                                            <div class="explorestx_specs_fill_workload_cl" id="explorestx_specs_fill_workload" style="width:90%!important;">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>Performance
+                                        <div class="explorestx_specs_blank">
+                                            <div class="explorestx_specs_fill_performance_cl" id="explorestx_specs_fill_performance" style="width:90%;"></div>
+                                        </div>
+                                    </li>
+                                    <li>Capacity
+                                        <div class="explorestx_specs_blank">
+                                            <div class="explorestx_specs_fill_capacity_cl" id="explorestx_specs_fill_capacity" style="width:50%;"></div>
+                                        </div>
+                                    </li>
+                                    <li>Reliability
+                                        <div class="explorestx_specs_blank">
+                                            <div class="explorestx_specs_fill_reliability_cl" id="explorestx_specs_fill_reliability" style="width:90%;"></div>
+                                        </div>
+                                    </li>
+                                    <li>Cost
+                                        <div class="explorestx_specs_blank">
+                                            <div class="explorestx_specs_fill_cost_cl" id="explorestx_specs_fill_cost" style="width:50%;"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <div id="explorestx_specs_2">
+                                <div class="explorestx_specs_2_list_cl" id="explorestx_specs_2_list">
+                                    <ul>
+                                        <li>Drive Type:<span>{{driveType}}
+                                        </span></li>
+                                        <li>Network Port:
+                                            <span>{{networkPort}}</span></li>
+                                    </ul>
+                                    <div style="clear:both;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid clearfix sub-features custom-1200-grid" id="grid">
+                        <a data-path-hover="m 0,0 0,47.7775 c 24.580441,3.12569 55.897012,-8.199417 90,-8.199417 34.10299,0 65.41956,11.325107 90,8.199417 L 180,0 z" href="#">
+                            <figure>
+                                <img src="/images/billing/feature-icon.png">
+                                <svg preserveAspectRatio="none" viewBox="0 0 180 320">
+                                <path d="M0,0C0,0,0,171.14385,0,171.14385C24.580441,186.61523,55.897012,195.90157,90,195.90157C124.10299,195.90157,155.41956,186.61523,180,171.14385C180,171.14385,180,0,180,0C180,0,0,0,0,0C0,0,0,0,0,0"></path>
+                                <desc>Created with Snap</desc><defs></defs></svg>
+                                <figcaption>
+                                    <h2>Feature list</h2>
+                                    <p>Compare all types of computing services to match your needs!</p>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                </div>
+                <div class="price-box col-xs-12 col-md-12 offset-md-1 col-lg-8">
+                    <form class="form-horizontal form-pricing pad_b130" role="form">
+                        <div class="price-slider">
+                            <h4 class="great">Regions</h4> {{billing-region billingRegionOption=billingRegionOption model=model regions=regions}}
+                        </div>
+                        <div class="price-slider">
+
+                            <h4 class="great">Plans</h4> {{billing-flavor model=model flavors=flavors flavorOption=flavorOption}}
+
+
+                        </div>
+                        <div class="price-form">
+                            {{billing-quota-monthly-cost model=model unitFlav=unitFlav}}
+                            <div class="form-group">
+                                {{billing-monthly-quotas model=model unitFlav=unitFlav}}
+                            </div>
+                            <hr class="style">
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <button class="btn btn-primary btn-lg btn-block" style="font-weight: bold;" type="submit" {{action "addFunds"}}>{{i18n 'billing.ordernow'}} <span class="glyphicon glyphicon-chevron-right pull-right" style="padding-right: 10px;"></span>
+                                  <span class="pull-right">
+                                       {{conditional-loading-spinner condition=formSubmitted size="large"}}
+                                  </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 pad_t16"><img class="img-responsive payment" src="/images/billing/payment.png"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

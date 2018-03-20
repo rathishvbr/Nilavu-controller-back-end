@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row c_pading-b15">
+        <div class="">
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <h3 class="title_padding storage-bucket-back">
+                  <a href="/storages">{{title}}</a>&nbsp;/
+                  <small>{{bucketName}}</small>
+                </h3>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <p class="c_pading-top-b20"><b>{{textTotalStorage}}</b> -&nbsp;<span class="text-green">{{totalStorage}}</span></p>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <p class="c_pading-top-b20"><b>{{textTotalObjects}}</b> -&nbsp;<span class="text-green">{{totalObjects}}</span></p>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <button {{action 'upload'}} class='btn blue pull-right'>+ Upload Files</button>
+            </div>
+        </div>
+    </div>
+</div>

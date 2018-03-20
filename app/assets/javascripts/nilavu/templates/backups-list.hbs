@@ -1,0 +1,43 @@
+<div class="rt-box col-xs-12 c_bg_white c_height_5">
+ <button class="btn-vertice btn btn-success pull-right " style="height:35px !important;" {{action "upload"}}>Create
+      <span class="pull-right">
+     {{conditional-loading-spinner condition=showSpinner size="large"}}
+     </span>
+   </button>
+<div id="app-list" {{bind-attr class="isList:listViewVisible"}}>
+  <div class="row c_pading-b15">
+    <div class="portlet-body-head">
+      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9 cat_title">
+        <span class="darker-black">
+          <i class="topics_header_snapshot"></i>
+          <span class="title">
+            {{i18n 'dashboards.backups.title'}}
+          </span>
+        </span>
+        <span style="display: block; margin-top: 10px;">
+          <span style="color: #6fde86">
+            {{noOfBackups}}
+          </span> {{i18n 'dashboards.backups.subtitle'}}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-divider"></div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+      {{#conditional-loading-spinner condition=showSpinner size="large" }}
+        <table class="table tb_action_list">
+          <tbody>
+            {{#each backupsData as |backup|}}
+              {{show-backup-data refreshAfterAction="refreshAfterDelete" model=model backup=backup url=url}}
+            {{/each}}
+          </tbody>
+        </table>
+
+      {{/conditional-loading-spinner}}
+    </div>
+  </div>
+
+ </div>
+</div>

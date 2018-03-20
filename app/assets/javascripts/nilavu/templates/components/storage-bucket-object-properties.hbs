@@ -1,0 +1,61 @@
+<div class="col-sm-5 storage-rt-list ">
+    <h3>{{textProperties}}</h3>
+    {{#if viewProperty}}
+
+        <table class="empty">
+            <tr>
+                <th>{{textName}}</th>
+                <td class="empty">{{objectName}}</td>
+            </tr>
+            <tr>
+                <th>{{textBucket}}</th>
+                <td class="empty">{{bucketName}}</td>
+            </tr>
+            <tr>
+                <th>{{textSize}}</th>
+                <td class="empty">{{objectSize}}</td>
+            </tr>
+            <tr>
+                <th>{{textLastModified}}</th>
+                <td class="empty">{{lastModified}}</td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <h3>{{textPermissions}}</h3>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                {{#if checkACL}}
+                    <button {{action 'setACL' 'public'}} class='btn btn-primary pull-right'>
+              {{textMakePublic}}
+              <span class="pull-right">
+                    {{conditional-loading-spinner condition=showACLSpinner size="large"}}
+              </span>
+            </button>
+                {{else}}
+                    <button {{action 'setACL' 'private'}} class='btn btn-success pull-right'>
+              {{textMakePrivate}}
+              <span class="pull-right">
+                    {{conditional-loading-spinner condition=showACLSpinner size="large"}}
+              </span>
+            </button>
+                {{/if}}
+            </div>
+        </div>
+        <table class="empty">
+            <tr>
+                <th>{{textLink}}</th>
+                <td class="empty">
+                    &nbsp;&nbsp;<i {{bind-attr class="aclIcon"}}></i>
+                    <a href= {{objectLink}} target='_blank'>{{objectLink}}</a>
+                </td>
+            </tr>
+        </table>
+    {{else}}
+        <div class="alert alert-info">
+            <strong>{{textInfo}}</strong> {{textPropertiesInfoMessage}}
+        </div>
+    {{/if}}
+
+
+</div>

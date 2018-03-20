@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row text-center" style="padding-top: 100px;">
+        <div class="col-md-9" style="padding-left: 200px;">
+            {{vncname}}
+        </div>
+        <div class="col-md-3" style="padding-bottom: 16px;">
+            <div class="col-md-8">
+                <button type="button" {{action "ctrlAltDel"}} class='btn btn-dark btn-block pad_5 btn_shade_little'>
+                    {{i18n "vnc.btn_CtrlAltDel"}}
+               </button>
+            </div>
+            <div class="col-md-4" style="margin-left: -23px;">
+             <div class="col-md-12" style="padding: 0px;">
+                <button type="button" title="close" {{action "close"}} class='btn btn-block btn-danger pad_4 btn_shade_little'>
+                  <span class="glyphicon glyphicon-remove i_font_s12"></span>
+               </button>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-12">
+            {{vm-console vnchost=vnchost sendCtrlAltDel=sendCtrlAltDel vncport=vncport}}
+        </div>
+    </div>
+</div>

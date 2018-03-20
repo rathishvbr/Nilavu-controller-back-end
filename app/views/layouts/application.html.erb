@@ -1,0 +1,94 @@
+<!--
+** Copyright [2013-2016] [Megam Systems]
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+** http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title><%= content_for?(:title) ? yield(:title) + ' - ' + SiteSetting.title : SiteSetting.title %></title>
+    <meta name="description" content="<%= SiteSetting.site_description %>">
+    <%= render partial: "layouts/head" %>
+    <%= render partial: "common/nilavu_stylesheet" %>
+    <%= render partial: "common/special_font_face" %>
+    <%= nilavu_csrf_tags %>
+    <script>
+      window.EmberENV = window.EmberENV || {};
+      window.EmberENV['FORCE_JQUERY'] = true;
+    </script>
+
+    <%= script "locales/#{I18n.locale}" %>
+    <%= script "ember_jquery" %>
+    <%= script "preload-store" %>
+    <%= script "vendor" %>
+    <%= script "application" %>
+
+    <script src="<%= GlobalSetting.google_js_uri %>"></script>
+    <script>google.load("visualization", "1", {packages:["corechart"]});</script>
+
+    <%- if staff? %>
+      <script src="<%= Nilavu.base_uri %>/extra-locales/admin"></script>
+      <%= script "admin"%>
+    <%- end %>
+
+    <%= render_google_universal_analytics_code %>
+    <%= yield :head %>
+  </head>
+  <body>
+    <div class="loading-notice apploading" id="apploading" role="alert">
+        <div class="wrapper">
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+            <p class="loading-text">Loading</p>
+        </div>
+    </div>
+    <!-- used as rootElement by ember -->
+    <section id='main_nilavu'>
+    </section>
+
+    <div id='offscreen-content'>
+    </div>
+
+    <% unless current_user %>
+      <form id='hidden-login-form' method="post" action="<%=main_app.login_path%>" style="display: none;">
+        <input name="username" type="text"     id="signin_username">
+        <input name="password" type="password" id="signin_password">
+        <input name="redirect" type="hidden">
+        <input type="submit" id="signin-button" value="<%= t 'log_in' %>">
+      </form>
+    <% end %>
+
+
+    <%- if @preloaded.present? %>
+      <script>
+      (function() {
+        var ps = require('preload-store').default;
+        <%- @preloaded.each do |key, json| %>
+          ps.store("<%= key %>", <%= escape_unicode(json) %>);
+        <% end %>
+      })();
+      </script>
+    <%- end %>
+
+    <%= yield :data %>
+
+    <%= render :partial => "common/nilavu_javascript" %>
+    <%= render_google_analytics_code %>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<div class="ssh-well-without-background">
+  <span class="pull-right col-md-2">
+
+<button type="button" class="btn-vertice btn btn-success pull-right " {{bind-attr disabled="applySharedPreference"}}{{action 'apply'}}>{{conditional-loading-spinner condition=showSpinner size="large" }}
+{{i18n 'admin.backup.shared.apply'}}</button>
+</span>
+  <h1>{{i18n 'admin.backup.shared.user'}}</h1>
+  <div class="row">
+
+
+    <div class="col-xs-12">
+
+      <table class="table report instances">
+        <thead>
+          <tr>
+            <th>{{i18n 'admin.backup.shared.user_name'}}</th>
+            <th>{{i18n 'admin.backup.shared.email'}}</th>
+            <th>{{i18n 'admin.backup.shared.authority'}}</th>
+            <th>{{i18n 'admin.backup.shared.active'}}</th>
+            <th>{{i18n 'admin.backup.shared.created_at'}}</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          {{#each users as |user|}}
+            {{backup-management-shared-user model=model backup=backup  sharingSelected=sharingSelected  user=user}}
+
+          {{/each}}
+        </tbody>
+      </table>
+
+    </div>
+
+
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="rt-box col-xs-12 c_height_5">
+
+    <div class="col-md-12">
+
+        <div class="col-md-5" style="padding-left: 60px;">
+            {{topic-list-header currentUser=currentUser title=title nameEnabled=nameEnabled name=name subTitleEnabled=subTitleEnabled subTitle=subTitle}}
+        </div>
+
+        <div class="col-md-7">
+            {{#link-to 'admin.dashboard' class="menu-box" }}
+                {{i18n 'admin.dashboard.btn_dashboard'}}
+                <span class="pull-right">
+                        {{conditional-loading-spinner condition=showSpinner size="large"}}
+                      </span>
+            {{/link-to}}
+
+            {{#link-to 'adminUsersList' class="menu-box" }}
+                {{i18n 'admin.dashboard.btn_users'}}
+                <span class="pull-right">
+                    {{conditional-loading-spinner condition=showSpinner size="large"}}
+                  </span>
+            {{/link-to}}
+
+            <a class="dropdown">
+                <button class="menu-box dropdown-toggle" type="button" data-toggle="dropdown">{{i18n 'admin.dashboard.btn_reports'}}
+                 <span class="caret"></span></button>
+                <ul class="dropdown-menu dropdown-menu-box">
+                    <li style="margin-top: -5px;"><a href="/admin/reports/sales">{{i18n 'admin.dashboard.btn_drop_sales'}}</a></li>
+                    <li><a href="/admin/reports/launches">{{i18n 'admin.dashboard.btn_drop_instances'}}</a></li>
+                    <li><a href="/admin/reports/backups">{{i18n 'admin.dashboard.btn_drop_backups'}}</a></li>
+                    <li><a href="/admin/reports/snapshots">{{i18n 'admin.dashboard.btn_drop_snapshots'}}</a></li>
+                </ul>
+            </a>
+
+
+            {{#link-to 'adminFlavors' class="menu-box" }}
+                {{i18n 'admin.dashboard.btn_flavours'}}
+                <span class="pull-right">
+             {{conditional-loading-spinner condition=showSpinner size="large"}}
+            </span>
+            {{/link-to}}
+
+            <!-- {{#link-to 'adminRawimages' class="menu-box" }}
+                {{i18n 'admin.marketplaces.title'}}
+                <span class="pull-right">
+             {{conditional-loading-spinner condition=showSpinner size="large"}}
+            </span>
+            {{/link-to}} -->
+
+            <a class="dropdown">
+                <button class="menu-box dropdown-toggle" type="button" data-toggle="dropdown">{{i18n 'admin.marketplaces.title'}}
+                 <span class="caret"></span></button>
+                <ul class="dropdown-menu dropdown-menu-box">
+                    <li style="margin-top: -5px;"><a href="/admin/settings/rawimages">{{i18n 'admin.dashboard.btn_drop_isoimage'}}</a></li>
+                    <li><a href="/admin/settings/backups">{{i18n 'admin.dashboard.btn_drop_backups'}}</a></li>
+                </ul>
+            </a>
+
+            {{#link-to 'adminLicensesList' class="menu-box menu-box-disabled" }}
+                {{i18n 'admin.dashboard.btn_licenses'}}
+                <span class="pull-right">
+                    {{conditional-loading-spinner condition=showSpinner size="large"}}
+                  </span>
+            {{/link-to}}
+
+        </div>
+    </div>
+    <div class="row bottom-divider"></div>
+
+    <section class="admin-contents">
+        <div class="container" style="padding-top: 15px;">
+            {{global-notice}} {{outlet}} {{outlet "loading"}}
+        </div>
+        {{notification-container notifications=notificationMessages position="bottom-right"}}
+    </section>
+</div>

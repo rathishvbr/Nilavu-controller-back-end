@@ -1,0 +1,76 @@
+<div class="container-fluid container-limited">
+    <div class="content">
+        <h3 class="panel-page-title">
+Your License
+  <button {{action "submit"}} class='btn btn-new pull-right clearfix'>Upload New License</button>
+</h3>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Licensed to
+                    </div>
+                    <ul class="well-list">
+                        <li>
+                            <span class="light">Name:</span>
+                            <strong>{{name}}</strong>
+                        </li>
+                        <li>
+                            <span class="light">Email:</span>
+                            <strong>{{email}}</strong>
+                        </li>
+                        <li>
+                            <span class="light">Company:</span>
+                            <strong>{{company}}</strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Details
+                    </div>
+                    <ul class="well-list">
+                        <li>
+                            <span class="light">Uploaded:</span>
+                            <strong><time class="js-timeago js-timeago-pending" datetime="2016-10-06T06:56:39Z" title="Oct 6, 2016 6:56am" data-toggle="tooltip" data-placement="top" data-container="body">{{uploaded}}</time></strong>
+                        </li>
+                        <li>
+                            <span class="light">Started:</span>
+                            <strong><time class="js-timeago js-timeago-pending" datetime="2016-10-06T00:00:00Z" title="Oct 6, 2016 12:00am" data-toggle="tooltip" data-placement="top" data-container="body">{{started}}</time></strong>
+                        </li>
+                        <li>
+                            <span class="light">Expires:</span>
+                            <strong><time class="js-timeago js-timeago-pending" datetime="2016-11-05T00:00:00Z" title="Nov 5, 2016 12:00am" data-toggle="tooltip" data-placement="top" data-container="body">{{expires}}</time></strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Download license
+                    </div>
+                    <div class="panel-body">
+                        <p>Your license will be included in your GitLab backup and will survive upgrades, so in normal usage you should never need to re-upload your <code>.gitlab-license</code> file.</p>
+                        <p>Still, we recommend keeping a backup saved somewhere. Otherwise, if you ever need it and have lost it, you will need to request GitLab Inc. to send it to you again.</p>
+                        <br>
+                        <a class="btn btn-info" href="/admin/license/download">Download license</a>
+                    </div>
+                </div>
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        Remove license
+                    </div>
+                    <div class="panel-body">
+                        <p>If you remove this license, GitLab will fall back on the previous license, if any.</p>
+                        <p>If there is no previous license or if the previous license has expired, some GitLab functionality will be blocked until a new, valid license is uploaded.</p>
+                        <br>
+                        <a data-confirm="Are you sure you want to remove the license?" class="btn btn-remove" rel="nofollow" data-method="delete" href="/admin/license">Remove license</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
